@@ -30,7 +30,8 @@ namespace SendingChecksOFD
         //Кнопка выход
         private void ButtonExitApp_Click(object sender, EventArgs e)
         {
-
+            Close();
+            Application.Exit();
         }
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)

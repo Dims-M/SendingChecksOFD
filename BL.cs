@@ -12,8 +12,8 @@ namespace SendingChecksOFD
   public  class BL
     {
         private string logErrors ="Журнал событий.txt";
-      // readonly string pathDir = @"C:\Program Files\Eou\";
-        readonly string pathDir = @"C:\Eou1\";
+        readonly string pathDir = @"C:\Program Files\Eou\";
+        //readonly string pathDir = @"C:\Eou1\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
 
 
@@ -30,7 +30,7 @@ namespace SendingChecksOFD
         }
 
 
-        public bool InitDirAndFile()
+        public void InitDirAndFile()
         {
             DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
             FileInfo fileInfo = new FileInfo(pathFileZip);
@@ -40,7 +40,7 @@ namespace SendingChecksOFD
                 {
                     dirInfo.Create();  // cоздаем временный католог
                     WrateText("Создался католог \n");
-                    return true;
+                   
                 }
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace SendingChecksOFD
                 WrateText("Произошла ошибка при создании главной директории!!! \n" + ex+"\n");
             }
           
-            return true;
+            
         }
 
 
