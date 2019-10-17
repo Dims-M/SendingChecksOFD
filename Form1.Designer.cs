@@ -116,8 +116,9 @@
             this.notifyIcon1.BalloonTipText = "Отправка чеков в ОФД";
             this.notifyIcon1.BalloonTipTitle = "Отправка чеков в ОФД 1";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "Отправка чеков в ОФД";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
             // 
             // Form1
             // 

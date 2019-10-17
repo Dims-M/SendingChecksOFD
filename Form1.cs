@@ -21,6 +21,9 @@ namespace SendingChecksOFD
             bl = new BL();
             bl.InitDirAndFile();
 
+           this.ShowInTaskbar = false;
+            notifyIcon1.Click += notifyIcon1_Click;
+
         }
 
         //Установка службы eUF
@@ -101,6 +104,15 @@ namespace SendingChecksOFD
             this.WindowState = FormWindowState.Minimized;
            // this.Hide();
         }
-
+        //при загрузки иконки трея
+        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
+        //Событие клика 
+        void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }
