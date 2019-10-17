@@ -33,13 +33,15 @@
             this.buttonStartEoU = new System.Windows.Forms.Button();
             this.buttonSaveSetings = new System.Windows.Forms.Button();
             this.labelInfo = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // buttonExitApp
             // 
-            this.buttonExitApp.Location = new System.Drawing.Point(445, 292);
+            this.buttonExitApp.Location = new System.Drawing.Point(445, 269);
             this.buttonExitApp.Name = "buttonExitApp";
-            this.buttonExitApp.Size = new System.Drawing.Size(97, 43);
+            this.buttonExitApp.Size = new System.Drawing.Size(97, 66);
             this.buttonExitApp.TabIndex = 0;
             this.buttonExitApp.Text = "Выход";
             this.buttonExitApp.UseVisualStyleBackColor = true;
@@ -47,29 +49,29 @@
             // 
             // buttonTesrtSatarEOU
             // 
-            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(22, 292);
+            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(22, 269);
             this.buttonTesrtSatarEOU.Name = "buttonTesrtSatarEOU";
-            this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(162, 43);
+            this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(162, 66);
             this.buttonTesrtSatarEOU.TabIndex = 1;
-            this.buttonTesrtSatarEOU.Text = "Запустить для отправки чеков EoU";
+            this.buttonTesrtSatarEOU.Text = "Скачать или проверить обновление службы  EoU";
             this.buttonTesrtSatarEOU.UseVisualStyleBackColor = true;
             this.buttonTesrtSatarEOU.Click += new System.EventHandler(this.ButtonTesrtSatarEOU_Click);
             // 
             // buttonStartEoU
             // 
-            this.buttonStartEoU.Location = new System.Drawing.Point(177, 158);
+            this.buttonStartEoU.Location = new System.Drawing.Point(177, 134);
             this.buttonStartEoU.Name = "buttonStartEoU";
-            this.buttonStartEoU.Size = new System.Drawing.Size(230, 63);
+            this.buttonStartEoU.Size = new System.Drawing.Size(230, 75);
             this.buttonStartEoU.TabIndex = 2;
-            this.buttonStartEoU.Text = "Установить службу отправки чеков EoU";
+            this.buttonStartEoU.Text = "Запустить службу отправки чеков EoU";
             this.buttonStartEoU.UseVisualStyleBackColor = true;
             this.buttonStartEoU.Click += new System.EventHandler(this.Button3_Click);
             // 
             // buttonSaveSetings
             // 
-            this.buttonSaveSetings.Location = new System.Drawing.Point(245, 292);
+            this.buttonSaveSetings.Location = new System.Drawing.Point(245, 269);
             this.buttonSaveSetings.Name = "buttonSaveSetings";
-            this.buttonSaveSetings.Size = new System.Drawing.Size(133, 43);
+            this.buttonSaveSetings.Size = new System.Drawing.Size(133, 66);
             this.buttonSaveSetings.TabIndex = 3;
             this.buttonSaveSetings.Text = "Сохранить настройки";
             this.buttonSaveSetings.UseVisualStyleBackColor = true;
@@ -84,17 +86,45 @@
             this.labelInfo.TabIndex = 4;
             this.labelInfo.Text = "l";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(177, 215);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(223, 21);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Запускать к скрытом режиме";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(177, 242);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(202, 21);
+            this.checkBox2.TabIndex = 6;
+            this.checkBox2.Text = "Атозапуск при включении";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 359);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.buttonSaveSetings);
             this.Controls.Add(this.buttonStartEoU);
             this.Controls.Add(this.buttonTesrtSatarEOU);
             this.Controls.Add(this.buttonExitApp);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(581, 406);
+            this.MinimumSize = new System.Drawing.Size(581, 406);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -109,6 +139,8 @@
         private System.Windows.Forms.Button buttonStartEoU;
         private System.Windows.Forms.Button buttonSaveSetings;
         private System.Windows.Forms.Label labelInfo;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

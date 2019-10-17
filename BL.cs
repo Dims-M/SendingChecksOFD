@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SendingChecksOFD
 {
@@ -13,23 +15,57 @@ namespace SendingChecksOFD
     {
         private string logErrors ="Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
+     
         //readonly string pathDir = @"C:\Eou1\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
 
+        string pathEoU = @"C:\EoU\EthOverUsb.exe";
+        string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
 
+      static  bool metHide = false;
+      static  bool avtoLoad = true;
 
 
 
         /// <summary>
-        /// закрыть процесс по имени
+        /// включение, отключение скрытого режима
         /// </summary>
-        /// <param name="nameProssec"></param>
+        /// <param name="hide"></param>
+        public void inetMetHide( bool hide)
+        {
+            avtoLoad = hide;
+        }
+
+        public void inetAvtoLoad(bool hide)
+        {
+            metHide = hide;
+        }
+
+        public void voidRegAvtoLoad( bool swixh)
+        {
+            if (swixh)
+            {
+                var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                key.SetValue("Название программы", Application.ExecutablePath);
+            }
+             
+
+            else 
+            {
+                var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                key.DeleteValue("Название программы");
+            }
+        }
+
         public void KillProssec(string nameProssec)
         {
             System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
         }
 
 
+        /// <summary>
+        /// Создание директории, временной папки
+        /// </summary>
         public void InitDirAndFile()
         {
             DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
@@ -161,6 +197,53 @@ namespace SendingChecksOFD
             }
         }
 
+
+
+        /// <summary>
+        /// Тестовой запус программы
+        /// </summary>
+        public async void StatrProgramm()
+        {
+          //  string pathProgramma = @"1.bat"; ;
+            string errorLog = $"t\n";
+
+            try
+            {
+              
+
+                Process iStartProcess = new Process(); // новый процесс
+                iStartProcess.StartInfo.FileName = pathEoU; // путь к запускаемому файлу
+                iStartProcess.StartInfo.Arguments = " -e";
+
+                if (metHide)
+                {
+                    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                }
+
+                // iStartProcess.StartInfo.Arguments = " -i 192.168.10.12 -p 10568"; // эта строка указывается, если программа запускается с параметрами (здесь указан пример, для наглядности)
+               // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; // эту строку указываем, если хотим запустить программу в скрытом виде
+                await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
+                // iStartProcess.Start(); 
+              // запускаем программу
+              // iStartProcess.WaitForExit(120000); // эту строку указываем, если нам надо будет ждать завершения программы определённое время, пример: 2 мин. (указано в миллисекундах - 2 мин. * 60 сек. * 1000 м.сек.)
+
+               //Thread.Sleep(4000);
+               // await Task.Run(() => KillProssec(@"tv_x64.exe"));
+                //  await Task.Run(() => KillProssec(@"tv_w32.exe"));
+                // KillProssec(@"rufus-3.6p");
+                errorLog += $"Программа удачно запущена{pathEoU}\n";
+                WrateText(errorLog);
+            }
+
+            catch (Exception ex)
+            {
+
+                errorLog += $"{ex}\t\n";
+                WrateText(errorLog);
+
+            }
+
+        }
 
     }
 
