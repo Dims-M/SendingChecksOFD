@@ -13,12 +13,18 @@ namespace SendingChecksOFD
     public partial class Form1 : Form
     {
         BL bl;
+        bool hhhide = false;
         public Form1()
         {
             InitializeComponent();
 
             bl = new BL();
             bl.InitDirAndFile();
+
+            if (hhhide)
+            {
+                this.WindowState = FormWindowState.Minimized;
+            }
         }
 
         //Установка службы eUF
@@ -94,7 +100,7 @@ namespace SendingChecksOFD
         private void HideForms ()
         {
             this.WindowState = FormWindowState.Minimized;
-            this.Hide();
+           // this.Hide();
         }
 
     }

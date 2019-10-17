@@ -25,6 +25,10 @@ namespace SendingChecksOFD
       static  bool metHide = false;
       static  bool avtoLoad = true;
 
+        //автозапуск приложения через реестр
+       // http://www.cyberforum.ru/csharp-beginners/thread282803.html
+        //скрытие формы
+
 
 
         /// <summary>
@@ -36,11 +40,19 @@ namespace SendingChecksOFD
             avtoLoad = hide;
         }
 
+        /// <summary>
+        /// Запуск в скрытом режиме
+        /// </summary>
+        /// <param name="hide"></param>
         public void inetAvtoLoad(bool hide)
         {
             metHide = hide;
         }
 
+        /// <summary>
+        /// Запись в автозагрузку
+        /// </summary>
+        /// <param name="swixh"></param>
         public void voidRegAvtoLoad( bool swixh)
         {
             if (swixh)
@@ -57,6 +69,7 @@ namespace SendingChecksOFD
             }
         }
 
+        //Pfrhsnm ghjwtcc gj bvtyb
         public void KillProssec(string nameProssec)
         {
             System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();

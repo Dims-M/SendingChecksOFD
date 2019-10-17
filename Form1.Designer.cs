@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonTesrtSatarEOU = new System.Windows.Forms.Button();
             this.buttonStartEoU = new System.Windows.Forms.Button();
@@ -120,12 +121,13 @@
             this.Controls.Add(this.buttonStartEoU);
             this.Controls.Add(this.buttonTesrtSatarEOU);
             this.Controls.Add(this.buttonExitApp);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(581, 406);
             this.MinimumSize = new System.Drawing.Size(581, 406);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Служба отправки чеков Атол EoU";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
