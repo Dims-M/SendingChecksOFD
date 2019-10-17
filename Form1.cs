@@ -36,19 +36,19 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-
+            HideForms();
         }
 
         //Тестовый запуск консоли еуф
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
-             
+
         }
 
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void InitForm()
@@ -80,6 +80,8 @@ namespace SendingChecksOFD
             {
                 MessageBox.Show("Запуск при загрузке включен!");
                 bl.voidRegAvtoLoad(true);
+                
+
             }
             else
             {
@@ -87,5 +89,13 @@ namespace SendingChecksOFD
                 bl.inetMetHide(false);
             }
         }
+
+
+        private void HideForms ()
+        {
+            this.WindowState = FormWindowState.Minimized;
+            this.Hide();
+        }
+
     }
 }
