@@ -21,10 +21,6 @@ namespace SendingChecksOFD
             bl = new BL();
             bl.InitDirAndFile();
 
-            if (hhhide)
-            {
-                this.WindowState = FormWindowState.Minimized;
-            }
         }
 
         //Установка службы eUF
@@ -54,7 +50,10 @@ namespace SendingChecksOFD
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            if (hhhide)
+            {
+                this.WindowState = FormWindowState.Minimized;
+            }
         }
 
         private void InitForm()

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonTesrtSatarEOU = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.labelInfo = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // buttonExitApp
@@ -109,6 +111,14 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipText = "Отправка чеков в ОФД";
+            this.notifyIcon1.BalloonTipTitle = "Отправка чеков в ОФД 1";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -143,6 +153,7 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
