@@ -41,7 +41,7 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-            
+            bl.WinRarJob();
         }
 
         //Тестовый запуск консоли еуф

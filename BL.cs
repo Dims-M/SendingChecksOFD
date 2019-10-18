@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -30,7 +31,11 @@ namespace SendingChecksOFD
         //скрытие формы
 
         //Количество файлов в папке
-       // http://www.cyberforum.ru/csharp-beginners/thread939527.html
+        // http://www.cyberforum.ru/csharp-beginners/thread939527.html
+
+            //работа с архивами
+        //http://www.codernotes.ru/articles/c-c/rabota-s-zip-arhivami-v-net-framework-3-5-na-c.html
+
 
 
         /// <summary>
@@ -75,6 +80,25 @@ namespace SendingChecksOFD
         public void KillProssec(string nameProssec)
         {
             System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+        }
+
+        //Распаковка архива в нужный каталог
+        public void ZipArhivJob()
+        {
+            string zipPath = @"C:\Eou1\EoU.zip";
+            string extractPath = @"C:\Eou1\test\";
+
+            try
+            {
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при разорхивации архива EoU\n"+ ex);
+            }
+            
+
         }
 
 
