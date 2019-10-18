@@ -26,9 +26,11 @@ namespace SendingChecksOFD
       static  bool avtoLoad = true;
 
         //автозапуск приложения через реестр
-       // http://www.cyberforum.ru/csharp-beginners/thread282803.html
+        // http://www.cyberforum.ru/csharp-beginners/thread282803.html
         //скрытие формы
 
+        //Количество файлов в папке
+       // http://www.cyberforum.ru/csharp-beginners/thread939527.html
 
 
         /// <summary>
@@ -69,7 +71,7 @@ namespace SendingChecksOFD
             }
         }
 
-        //Pfrhsnm ghjwtcc gj bvtyb
+        //закрыть нужны процесс по имени.
         public void KillProssec(string nameProssec)
         {
             System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
@@ -82,7 +84,7 @@ namespace SendingChecksOFD
         public void InitDirAndFile()
         {
             DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
-            FileInfo fileInfo = new FileInfo(pathFileZip);
+           // FileInfo fileInfo = new FileInfo(pathFileZip);
             try
             {
                 if (!dirInfo.Exists)
@@ -100,6 +102,32 @@ namespace SendingChecksOFD
             
         }
 
+        /// <summary>
+        /// Проверка существует ли папка с файлами EoU
+        /// </summary>
+        public int GetDirecEou()
+        {
+            string pathDirEoU = @"C:\EoU\";
+            int fileCount = 0;
+            string[] filePaths;
+
+            DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
+
+            if (dirInfo.Exists)
+            {
+                filePaths = Directory.GetFiles(pathDirEoU);
+                fileCount = filePaths.Length;
+            }
+
+            if (fileCount <12)
+            {
+                //Скачать или  установить папку Eou
+            }
+
+            // FileInfo fileInfo = new FileInfo(pathFileZip);
+
+            return fileCount;
+        }
 
         /// <summary>
         /// Получение файла ссайта 000webhostapp.com
@@ -217,13 +245,9 @@ namespace SendingChecksOFD
         /// </summary>
         public async void StatrProgramm()
         {
-          //  string pathProgramma = @"1.bat"; ;
             string errorLog = $"t\n";
-
             try
             {
-              
-
                 Process iStartProcess = new Process(); // новый процесс
                 iStartProcess.StartInfo.FileName = pathEoU; // путь к запускаемому файлу
                 iStartProcess.StartInfo.Arguments = " -e";
@@ -233,27 +257,15 @@ namespace SendingChecksOFD
                     iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 }
 
-                // iStartProcess.StartInfo.Arguments = " -i 192.168.10.12 -p 10568"; // эта строка указывается, если программа запускается с параметрами (здесь указан пример, для наглядности)
-               // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; // эту строку указываем, если хотим запустить программу в скрытом виде
                 await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
-                // iStartProcess.Start(); 
-              // запускаем программу
-              // iStartProcess.WaitForExit(120000); // эту строку указываем, если нам надо будет ждать завершения программы определённое время, пример: 2 мин. (указано в миллисекундах - 2 мин. * 60 сек. * 1000 м.сек.)
-
-               //Thread.Sleep(4000);
-               // await Task.Run(() => KillProssec(@"tv_x64.exe"));
-                //  await Task.Run(() => KillProssec(@"tv_w32.exe"));
-                // KillProssec(@"rufus-3.6p");
                 errorLog += $"Программа удачно запущена{pathEoU}\n";
                 WrateText(errorLog);
             }
 
             catch (Exception ex)
             {
-
                 errorLog += $"{ex}\t\n";
                 WrateText(errorLog);
-
             }
 
         }

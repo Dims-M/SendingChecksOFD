@@ -41,7 +41,7 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-            HideForms();
+            
         }
 
         //Тестовый запуск консоли еуф
@@ -57,6 +57,8 @@ namespace SendingChecksOFD
             {
                 this.WindowState = FormWindowState.Minimized;
             }
+
+            labelInfo.Text = bl.GetDirecEou().ToString();
         }
 
         private void InitForm()
