@@ -17,7 +17,7 @@ namespace SendingChecksOFD
         private string logErrors ="Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
      
-        //readonly string pathDir = @"C:\Eou1\";
+        readonly string pathDirTemp = @"C:\EoUTemp\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
 
         string pathEoU = @"C:\EoU\EthOverUsb.exe";
@@ -44,16 +44,16 @@ namespace SendingChecksOFD
         /// <param name="hide"></param>
         public void inetMetHide( bool hide)
         {
-            avtoLoad = hide;
+            metHide = hide;
         }
 
         /// <summary>
         /// Запуск в скрытом режиме
         /// </summary>
         /// <param name="hide"></param>
-        public void inetAvtoLoad(bool hide)
+        public void inetAvtoLoad(bool AvtoLoad)
         {
-            metHide = hide;
+            metHide = AvtoLoad;
         }
 
         /// <summary>
@@ -65,14 +65,14 @@ namespace SendingChecksOFD
             if (swixh)
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.SetValue("Название программы", Application.ExecutablePath);
+                key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
             }
              
 
             else 
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.DeleteValue("Название программы");
+                key.DeleteValue("Отправка чеков в ОФД");
             }
         }
 
@@ -85,8 +85,8 @@ namespace SendingChecksOFD
         //Распаковка архива в нужный каталог
         public void ZipArhivJob()
         {
-            string zipPath = @"C:\Eou1\EoU.zip";
-            string extractPath = @"C:\Eou1\test\";
+            string zipPath = @"C:\EoUTemp\EoU.zip";
+            string extractPath = @"C:\";
 
             try
             {
@@ -105,9 +105,9 @@ namespace SendingChecksOFD
         /// <summary>
         /// Создание директории, временной папки
         /// </summary>
-        public void InitDirAndFile()
+        public void InitDirAndFile( string myPachDir)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
+            DirectoryInfo dirInfo = new DirectoryInfo(myPachDir);
            // FileInfo fileInfo = new FileInfo(pathFileZip);
             try
             {
@@ -126,8 +126,9 @@ namespace SendingChecksOFD
             
         }
 
+
         /// <summary>
-        /// Проверка существует ли папка с файлами EoU
+        /// Проверка количества файлов папка с файлами EoU
         /// </summary>
         public int GetDirecEou()
         {
@@ -135,21 +136,33 @@ namespace SendingChecksOFD
             int fileCount = 0;
             string[] filePaths;
 
-            DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
-
-            if (dirInfo.Exists)
+            try
             {
-                filePaths = Directory.GetFiles(pathDirEoU);
-                fileCount = filePaths.Length;
-            }
+                DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
 
-            if (fileCount <12)
+                if (dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
+                {
+                    InitDirAndFile(pathDirTemp);
+                    InitDirAndFile(pathDirEoU);
+                    GetFailSite(); // загружаем файл с сайта
+                }
+
+               if (dirInfo.Exists)
+                {
+                    filePaths = Directory.GetFiles(pathDirEoU);
+                    fileCount = filePaths.Length;
+                }
+
+                if (fileCount < 12)
+                {
+                    WrateText("Ошибка. Количество файлом не соотвестыует нужному количеству");
+                }
+
+            }
+            catch (Exception ex)
             {
-                //Скачать или  установить папку Eou
+                WrateText("произошла ошибка при проверке существования папки EoU");
             }
-
-            // FileInfo fileInfo = new FileInfo(pathFileZip);
-
             return fileCount;
         }
 
@@ -159,10 +172,8 @@ namespace SendingChecksOFD
         public void GetFailSite()
         {
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
-            string pathFile = "D.exe";
-            // string serFtp = @"https://testkkm.000webhostapp.com/1/text.txt";
-            // string serFtp = @"https://testkkm.000webhostapp.com/1/rufus-3.6p.txt";
-            string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/D.txt";
+            string pathFile = @"C:\EoUTemp\EoU.zip";
+            string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/EoU.zip";
 
             if (File.Exists(pathFile))
             {
@@ -278,7 +289,8 @@ namespace SendingChecksOFD
 
                 if (metHide)
                 {
-                    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                   // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                 }
 
                 await Task.Run(() => iStartProcess.Start()); // запуск программы лечения

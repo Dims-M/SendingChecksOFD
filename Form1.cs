@@ -19,9 +19,10 @@ namespace SendingChecksOFD
             InitializeComponent();
 
             bl = new BL();
-            bl.InitDirAndFile();
+            bl.GetDirecEou();
+            bl.ZipArhivJob(); // распаковка 
 
-           this.ShowInTaskbar = false;
+            this.ShowInTaskbar = true;
             notifyIcon1.Click += notifyIcon1_Click;
 
         }
@@ -41,18 +42,19 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-            bl.WinRarJob();
+          
         }
 
         //Тестовый запуск консоли еуф
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
-
+            bl.GetFailSite();
         }
 
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
+          
             if (hhhide)
             {
                 this.WindowState = FormWindowState.Minimized;
@@ -70,6 +72,7 @@ namespace SendingChecksOFD
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
+
             if (checkBox.Checked == true)
             {
                 MessageBox.Show("Запуск в скрытом режиме включен!");
@@ -96,7 +99,7 @@ namespace SendingChecksOFD
             else
             {
                 MessageBox.Show("Запуск при загрузке Отключен. !");
-                bl.inetMetHide(false);
+                bl.voidRegAvtoLoad(false);
             }
         }
 
