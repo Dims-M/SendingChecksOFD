@@ -22,6 +22,8 @@ namespace SendingChecksOFD
 
         string pathEoU = @"C:\EoU\EthOverUsb.exe";
         string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
+        string[] port = new string[10];
+
 
       static  bool metHide = false;
       static  bool avtoLoad = true;
@@ -99,6 +101,33 @@ namespace SendingChecksOFD
             }
             
 
+        }
+
+        /// <summary>
+        /// Считываем порт из настроек EoU
+        /// </summary>
+        /// <returns></returns>
+        public string GetSettingPortEou()
+        {
+           port = File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
+           return port[1];
+        }
+
+
+        public  void SetSettingPortEou( int myPort)
+        {
+
+           // File.OpenWrite( ).Seek(-2, SeekOrigin.End);
+           string text =$"[com]\nnumber={myPort}";
+           
+            // запись в файл
+            using (FileStream fstream = new FileStream(@"C:\EoU\settings.ini", FileMode.Create))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(text);
+                // асинхронная запись массива байтов в файл
+                fstream.Write(array, 0, array.Length);
+               // Console.WriteLine("Текст записан в файл");
+            }
         }
 
 

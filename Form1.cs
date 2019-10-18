@@ -42,7 +42,10 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-          
+           // labelInfo.Text += bl.GetSettingPortEou();
+            bl.SetSettingPortEou(decimal.ToInt32(numericUpDown1.Value));
+            labelInfo.Text = bl.GetSettingPortEou();
+
         }
 
         //Тестовый запуск консоли еуф
@@ -118,6 +121,12 @@ namespace SendingChecksOFD
         void notifyIcon1_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+        }
+
+
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
