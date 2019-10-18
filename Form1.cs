@@ -21,6 +21,7 @@ namespace SendingChecksOFD
             bl = new BL();
             bl.GetDirecEou();
             bl.ZipArhivJob(); // распаковка 
+            
 
             this.ShowInTaskbar = true;
             notifyIcon1.Click += notifyIcon1_Click;
@@ -42,7 +43,7 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-           // labelInfo.Text += bl.GetSettingPortEou();
+            labelInfo.Text += bl.GetSettingPortEou();
             bl.SetSettingPortEou(decimal.ToInt32(numericUpDown1.Value));
             labelInfo.Text = bl.GetSettingPortEou();
 
@@ -63,7 +64,8 @@ namespace SendingChecksOFD
                 this.WindowState = FormWindowState.Minimized;
             }
 
-            labelInfo.Text = bl.GetDirecEou().ToString();
+          // labelInfo.Text = "Rjkbx{bl.GetDirecEou().ToString()}";
+            labelInfo.Text += bl.GetSettingPortEou();
         }
 
         private void InitForm()

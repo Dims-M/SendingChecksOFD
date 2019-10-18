@@ -110,7 +110,7 @@ namespace SendingChecksOFD
         public string GetSettingPortEou()
         {
            port = File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
-           return port[1];
+           return $"Порт дляотправки чеков установлен = {port[1]}";
         }
 
 
