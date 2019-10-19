@@ -78,10 +78,33 @@ namespace SendingChecksOFD
             }
         }
 
+        /// <summary>
+        /// Автозапуск слузбы еов
+        /// </summary>
+        public void AvtoServeesEoU()
+        {
+
+        }
+
+
+        public void UbdeidApp()
+        {
+
+        }
+
+
         //закрыть нужны процесс по имени.
         public void KillProssec(string nameProssec)
         {
-            System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+            try
+            {
+                System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+            }
+            catch(Exception ex)
+            {
+                WrateText(" Ошибка при закрытии процесса");
+            }
+             
         }
 
         //Распаковка архива в нужный каталог

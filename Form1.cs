@@ -31,6 +31,7 @@ namespace SendingChecksOFD
         //Установка службы eUF
         private void Button3_Click(object sender, EventArgs e)
         {
+            bl.KillProssec("EthOverUsb");
             bl.StatrProgramm();
         }
 
