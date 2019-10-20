@@ -70,7 +70,9 @@ namespace SendingChecksOFD
             if (swixh)
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
+               // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
+                key.SetValue("Отправка чеков в ОФД", @"C:\EoU\~runme");
+
             }
              
 
