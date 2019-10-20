@@ -35,10 +35,13 @@ namespace SendingChecksOFD
         //Количество файлов в папке
         // http://www.cyberforum.ru/csharp-beginners/thread939527.html
 
-            //работа с архивами
+        //работа с архивами
         //http://www.codernotes.ru/articles/c-c/rabota-s-zip-arhivami-v-net-framework-3-5-na-c.html
 
-
+        //Пример сохранения данных программы
+        //https://www.youtube.com/watch?v=I6Gge6_8Svg&t=0s
+        //https://www.youtube.com/watch?v=CHTd5IMVkPI&t=0s win prov
+       // https://www.youtube.com/watch?v=Mb3S2IK3NzI&t=2230s
 
         /// <summary>
         /// включение, отключение скрытого режима
