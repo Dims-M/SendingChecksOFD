@@ -108,7 +108,7 @@ namespace SendingChecksOFD
             }
             catch(Exception ex)
             {
-                WrateText(" Ошибка при закрытии процесса");
+                WrateText(" Ошибка при закрытии процесса"+ ex);
             }
              
         }
@@ -139,7 +139,7 @@ namespace SendingChecksOFD
         public string GetSettingPortEou()
         {
            port = File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
-           return $"Порт дляо тправки чеков установлен = {port[1]}";
+           return $"Порт дляо отправки чеков установлен = {port[1]}";
         }
 
 
@@ -197,12 +197,14 @@ namespace SendingChecksOFD
             try
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
+               // File file = new File()
 
                 if (dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
                 {
                     InitDirAndFile(pathDirTemp);
                     InitDirAndFile(pathDirEoU);
                     GetFailSite(); // загружаем файл с сайта
+                    ZipArhivJob();
                 }
 
                if (dirInfo.Exists)
@@ -219,7 +221,7 @@ namespace SendingChecksOFD
             }
             catch (Exception ex)
             {
-                WrateText("произошла ошибка при проверке существования папки EoU");
+                WrateText("произошла ошибка при проверке существования папки EoU"+ex);
             }
             return fileCount;
         }

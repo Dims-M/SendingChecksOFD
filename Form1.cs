@@ -21,7 +21,6 @@ namespace SendingChecksOFD
             bl = new BL();
             bl.GetDirecEou();
             bl.ZipArhivJob(); // распаковка 
-            
 
             this.ShowInTaskbar = true;
             notifyIcon1.Click += notifyIcon1_Click;
@@ -33,6 +32,7 @@ namespace SendingChecksOFD
         {
             bl.KillProssec("EthOverUsb");
             bl.StatrProgramm(hhhide);
+
         }
 
         //Кнопка выход
