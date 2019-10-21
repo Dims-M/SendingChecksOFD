@@ -81,7 +81,7 @@ namespace SendingChecksOFD
             else 
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.DeleteValue(@"C:\EoU\EthOverUsb.exe");
+                key.DeleteValue("Отправка чеков в ОФД", true);
             }
         }
 
@@ -172,7 +172,7 @@ namespace SendingChecksOFD
             string text = $"Mode ={mUMode}";
 
             // запись в файл
-            using (FileStream fstream = new FileStream(@"C:\EoU\settingsOFD.ini", FileMode.Create))
+            using (FileStream fstream = new FileStream(@"C:\EoU\settingsOFD.ini", FileMode.OpenOrCreate))
             {
                 byte[] array = System.Text.Encoding.Default.GetBytes(text);
                 // асинхронная запись массива байтов в файл
@@ -187,7 +187,7 @@ namespace SendingChecksOFD
         /// <returns></returns>
         public int SetSettingMode()
         {
-               var mode = File.ReadAllText(@"C:\EoU\settingsOFD.ini").Split('=');
+            var mode = File.ReadAllText(@"C:\EoU\settingsOFD.ini").Split('=');
             int temMode =0;
             try
             {
@@ -206,13 +206,15 @@ namespace SendingChecksOFD
         public void InitDirAndFile( string myPachDir)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(myPachDir);
+           // File.Create(@"C:\EoU\settings.ini");
+
            // FileInfo fileInfo = new FileInfo(pathFileZip);
             try
             {
                 if (!dirInfo.Exists)
                 {
                     dirInfo.Create();  // cоздаем временный католог
-                    WrateText("Создался католог \n");
+                    WrateText($"Создался католог {myPachDir}\n");
                    
                 }
             }
@@ -242,15 +244,20 @@ namespace SendingChecksOFD
                 {
                     InitDirAndFile(pathDirTemp);
                     InitDirAndFile(pathDirEoU);
+                  //  GetSetingStarMode(0); //запуск 
                     GetFailSite(); // загружаем файл с сайта
+                    ZipArhivJob();  //***************
                     tempInfo += "Первоночальная Загрузка и распаковка новой службы EoU";
-                }
-
-               if (dirInfo.Exists)
-                {
                     filePaths = Directory.GetFiles(pathDirEoU);
                     fileCount = filePaths.Length;
+
                 }
+
+               //if (dirInfo.Exists)
+               // {
+               //     filePaths = Directory.GetFiles(pathDirEoU);
+               //     fileCount = filePaths.Length;
+               // }
 
                 if (fileCount < 12)
                 {

@@ -89,11 +89,13 @@ namespace SendingChecksOFD
             {
                 MessageBox.Show("Запуск в скрытом режиме включен!");
                 bl.inetMetHide(true);
+                bl.GetSetingStarMode(1);
             }
             else
             {
                 MessageBox.Show("Запуск в скрытом режиме Отключен!");
-                bl.inetMetHide(false);
+                bl.GetSetingStarMode(0);
+                bl.voidRegAvtoLoad(true);
             }
         }
 
@@ -104,14 +106,15 @@ namespace SendingChecksOFD
             if (checkBox.Checked == true)
             {
                 MessageBox.Show("Запуск при загрузке включен!");
-                bl.voidRegAvtoLoad(true);
-                bl.GetSetingStarMode(1);
+               
+
+                 
 
             }
             else
             {
                 MessageBox.Show("Запуск при загрузке Отключен. !");
-                bl.GetSetingStarMode(0);
+               // bl.GetSetingStarMode(0);
                 bl.voidRegAvtoLoad(false);
             }
         }
