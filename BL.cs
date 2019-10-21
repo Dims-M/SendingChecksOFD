@@ -73,7 +73,7 @@ namespace SendingChecksOFD
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
                // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
-                key.SetValue("Отправка чеков в ОФД", @"C:\EoU\~runme");
+                key.SetValue("Отправка чеков в ОФД", @"C:\EoU\EthOverUsb.exe");
 
             }
              
@@ -81,7 +81,7 @@ namespace SendingChecksOFD
             else 
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.DeleteValue("Отправка чеков в ОФД");
+                key.DeleteValue(@"C:\EoU\EthOverUsb.exe");
             }
         }
 

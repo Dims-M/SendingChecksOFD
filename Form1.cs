@@ -144,8 +144,8 @@ namespace SendingChecksOFD
         private void Form1_Shown(object sender, EventArgs e)
         {
             MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}");
+            bl.ZipArhivJob(); // распаковка
             bl.GetDirecEou();
-            bl.ZipArhivJob(); // распаковка 
             labelInfo.Text += bl.GetSettingPortEou();
 
         }
