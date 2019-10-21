@@ -351,6 +351,7 @@ namespace SendingChecksOFD
                     iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                 }
 
+
                 await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
                 errorLog += $"Программа удачно запущена{pathEoU}\n";
                 WrateText(errorLog);
