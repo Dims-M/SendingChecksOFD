@@ -86,7 +86,7 @@ namespace SendingChecksOFD
         }
 
         /// <summary>
-        /// Автозапуск слузбы еов
+        /// Автозапуск службы еов
         /// </summary>
         public void AvtoServeesEoU()
         {
@@ -163,7 +163,42 @@ namespace SendingChecksOFD
             }
         }
 
+        /// <summary>
+        /// Установка режима работы. Создание файла настроек
+        /// </summary>
+        /// <param name="mUMode"></param>
+        public void GetSetingStarMode(int mUMode)
+        {
+            string text = $"Mode ={mUMode}";
 
+            // запись в файл
+            using (FileStream fstream = new FileStream(@"C:\EoU\settingsOFD.ini", FileMode.Create))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(text);
+                // асинхронная запись массива байтов в файл
+                fstream.Write(array, 0, array.Length);
+                // Console.WriteLine("Текст записан в файл");
+            }
+        }
+
+        /// <summary>
+        /// Загрузка файла настроек. 
+        /// </summary>
+        /// <returns></returns>
+        public int SetSettingMode()
+        {
+               var mode = File.ReadAllText(@"C:\EoU\settingsOFD.ini").Split('=');
+            int temMode =0;
+            try
+            {
+                return temMode = int.Parse(mode[1]);
+            }
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при загрузке файла настроек"+ex);
+            }
+            return  temMode;
+        }
 
         /// <summary>
         /// Создание директории, временной папки
@@ -353,13 +388,26 @@ namespace SendingChecksOFD
         public async void StatrProgramm()
         {
             string errorLog = $"t\n";
+            int tempMofde = SetSettingMode();
+
+            //Проверка загруженный режима автозагрузки
+            if (tempMofde == 1)
+            {
+                metHide = true;
+            }
+
+            if (tempMofde == 0)
+            {
+                metHide = false;
+            }
+
             try
             {
                 Process iStartProcess = new Process(); // новый процесс
                 iStartProcess.StartInfo.FileName = pathEoU; // путь к запускаемому файлу
                 iStartProcess.StartInfo.Arguments = " -e";
 
-                if (metHide)
+                if (metHide )
                 {
                    // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;

@@ -36,6 +36,8 @@ namespace SendingChecksOFD
         {
             bl.KillProssec("EthOverUsb");
             bl.StatrProgramm();
+
+
         }
 
         //Кнопка выход
@@ -50,7 +52,7 @@ namespace SendingChecksOFD
             labelInfo.Text += bl.GetSettingPortEou();
             bl.SetSettingPortEou(decimal.ToInt32(numericUpDown1.Value));
             labelInfo.Text = bl.GetSettingPortEou();
-
+           // bl.GetSetingStarMode();
         }
 
         //Тестовый запуск консоли еуф
@@ -62,8 +64,8 @@ namespace SendingChecksOFD
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
-
-           // bl.GetDirecEou();
+          
+            // bl.GetDirecEou();
             if (hhhide)
             {
                 this.WindowState = FormWindowState.Minimized;
@@ -103,12 +105,13 @@ namespace SendingChecksOFD
             {
                 MessageBox.Show("Запуск при загрузке включен!");
                 bl.voidRegAvtoLoad(true);
-                
+                bl.GetSetingStarMode(1);
 
             }
             else
             {
                 MessageBox.Show("Запуск при загрузке Отключен. !");
+                bl.GetSetingStarMode(0);
                 bl.voidRegAvtoLoad(false);
             }
         }
