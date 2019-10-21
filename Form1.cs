@@ -19,11 +19,9 @@ namespace SendingChecksOFD
             InitializeComponent();
 
             bl = new BL();
-            bl.GetDirecEou();
-            bl.ZipArhivJob(); // распаковка 
-            
+            bl.InitDirAndFile();
 
-            this.ShowInTaskbar = true;
+           this.ShowInTaskbar = false;
             notifyIcon1.Click += notifyIcon1_Click;
 
         }
@@ -31,7 +29,6 @@ namespace SendingChecksOFD
         //Установка службы eUF
         private void Button3_Click(object sender, EventArgs e)
         {
-            bl.KillProssec("EthOverUsb");
             bl.StatrProgramm();
         }
 
@@ -44,29 +41,24 @@ namespace SendingChecksOFD
         //Сохранить настройки
         private void ButtonSaveSetings_Click(object sender, EventArgs e)
         {
-            labelInfo.Text += bl.GetSettingPortEou();
-            bl.SetSettingPortEou(decimal.ToInt32(numericUpDown1.Value));
-            labelInfo.Text = bl.GetSettingPortEou();
-
+            
         }
 
         //Тестовый запуск консоли еуф
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
-            bl.GetFailSite();
+
         }
 
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
-          
             if (hhhide)
             {
                 this.WindowState = FormWindowState.Minimized;
             }
 
-          // labelInfo.Text = "Rjkbx{bl.GetDirecEou().ToString()}";
-            labelInfo.Text += bl.GetSettingPortEou();
+            labelInfo.Text = bl.GetDirecEou().ToString();
         }
 
         private void InitForm()
@@ -78,7 +70,6 @@ namespace SendingChecksOFD
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
-
             if (checkBox.Checked == true)
             {
                 MessageBox.Show("Запуск в скрытом режиме включен!");
@@ -105,7 +96,7 @@ namespace SendingChecksOFD
             else
             {
                 MessageBox.Show("Запуск при загрузке Отключен. !");
-                bl.voidRegAvtoLoad(false);
+                bl.inetMetHide(false);
             }
         }
 
@@ -124,12 +115,6 @@ namespace SendingChecksOFD
         void notifyIcon1_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
-        }
-
-
-        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
