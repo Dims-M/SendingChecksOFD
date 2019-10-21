@@ -14,6 +14,7 @@ namespace SendingChecksOFD
     {
         BL bl;
         bool hhhide = false;
+        private string _temp_info;
         public Form1()
         {
             InitializeComponent();
@@ -139,7 +140,8 @@ namespace SendingChecksOFD
         //Событие при вервом отображении формы
         private void Form1_Shown(object sender, EventArgs e)
         {
-            MessageBox.Show("Проверка наличия службы Eou");
+          
+            MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}");
            
         }
     }

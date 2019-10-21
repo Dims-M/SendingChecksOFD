@@ -25,6 +25,7 @@ namespace SendingChecksOFD
         string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
         string[] port = new string[10];
 
+      string tempInfo = "";
 
       static  bool metHide = false;
       static  bool avtoLoad = true;
@@ -207,6 +208,7 @@ namespace SendingChecksOFD
                     InitDirAndFile(pathDirTemp);
                     InitDirAndFile(pathDirEoU);
                     GetFailSite(); // загружаем файл с сайта
+                    tempInfo += "Первоночальная Загрузка и распаковка новой службы EoU";
                 }
 
                if (dirInfo.Exists)
@@ -229,11 +231,11 @@ namespace SendingChecksOFD
         }
 
 
-        public bool proverkaDirFikeEou()
+        public string proverkaDirFikeEou()
         {
 
-
-            return true;
+           
+            return tempInfo;
         }
 
         /// <summary>
