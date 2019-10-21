@@ -17,13 +17,11 @@ namespace SendingChecksOFD
         private string logErrors ="Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
      
-        readonly string pathDirTemp = @"C:\EoUTemp\";
+        //readonly string pathDir = @"C:\Eou1\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
 
         string pathEoU = @"C:\EoU\EthOverUsb.exe";
         string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
-        string[] port = new string[10];
-
 
       static  bool metHide = false;
       static  bool avtoLoad = true;
@@ -37,11 +35,9 @@ namespace SendingChecksOFD
 
         //работа с архивами
         //http://www.codernotes.ru/articles/c-c/rabota-s-zip-arhivami-v-net-framework-3-5-na-c.html
+       // https://xn--d1aiecikab7a.xn--p1ai/2015/02/28/c_sharp_3/
 
-        //Пример сохранения данных программы
-        //https://www.youtube.com/watch?v=I6Gge6_8Svg&t=0s
-        //https://www.youtube.com/watch?v=CHTd5IMVkPI&t=0s win prov
-       // https://www.youtube.com/watch?v=Mb3S2IK3NzI&t=2230s
+
 
         /// <summary>
         /// включение, отключение скрытого режима
@@ -49,16 +45,16 @@ namespace SendingChecksOFD
         /// <param name="hide"></param>
         public void inetMetHide( bool hide)
         {
-            metHide = hide;
+            avtoLoad = hide;
         }
 
         /// <summary>
         /// Запуск в скрытом режиме
         /// </summary>
         /// <param name="hide"></param>
-        public void inetAvtoLoad(bool AvtoLoad)
+        public void inetAvtoLoad(bool hide)
         {
-            metHide = AvtoLoad;
+            metHide = hide;
         }
 
         /// <summary>
@@ -70,53 +66,28 @@ namespace SendingChecksOFD
             if (swixh)
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-               // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
-                key.SetValue("Отправка чеков в ОФД", @"C:\EoU\~runme");
-
+                key.SetValue("Название программы", Application.ExecutablePath);
             }
              
 
             else 
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.DeleteValue("Отправка чеков в ОФД");
+                key.DeleteValue("Название программы");
             }
         }
-
-        /// <summary>
-        /// Автозапуск слузбы еов
-        /// </summary>
-        public void AvtoServeesEoU()
-        {
-
-        }
-
-
-        public void UbdeidApp()
-        {
-
-        }
-
 
         //закрыть нужны процесс по имени.
         public void KillProssec(string nameProssec)
         {
-            try
-            {
-                System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
-            }
-            catch(Exception ex)
-            {
-                WrateText(" Ошибка при закрытии процесса");
-            }
-             
+            System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
         }
 
         //Распаковка архива в нужный каталог
         public void ZipArhivJob()
         {
-            string zipPath = @"C:\EoUTemp\EoU.zip";
-            string extractPath = @"C:\";
+            string zipPath = @"C:\Eou1\EoU.zip";
+            string extractPath = @"C:\Eou1\test\";
 
             try
             {
@@ -131,40 +102,13 @@ namespace SendingChecksOFD
 
         }
 
-        /// <summary>
-        /// Считываем порт из настроек EoU
-        /// </summary>
-        /// <returns></returns>
-        public string GetSettingPortEou()
-        {
-           port = File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
-           return $"Порт дляотправки чеков установлен = {port[1]}";
-        }
-
-
-        public  void SetSettingPortEou( int myPort)
-        {
-
-           // File.OpenWrite( ).Seek(-2, SeekOrigin.End);
-           string text =$"[com]\nnumber={myPort}";
-           
-            // запись в файл
-            using (FileStream fstream = new FileStream(@"C:\EoU\settings.ini", FileMode.Create))
-            {
-                byte[] array = System.Text.Encoding.Default.GetBytes(text);
-                // асинхронная запись массива байтов в файл
-                fstream.Write(array, 0, array.Length);
-               // Console.WriteLine("Текст записан в файл");
-            }
-        }
-
 
         /// <summary>
         /// Создание директории, временной папки
         /// </summary>
-        public void InitDirAndFile( string myPachDir)
+        public void InitDirAndFile()
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(myPachDir);
+            DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
            // FileInfo fileInfo = new FileInfo(pathFileZip);
             try
             {
@@ -183,9 +127,8 @@ namespace SendingChecksOFD
             
         }
 
-
         /// <summary>
-        /// Проверка количества файлов папка с файлами EoU
+        /// Проверка существует ли папка с файлами EoU
         /// </summary>
         public int GetDirecEou()
         {
@@ -193,33 +136,21 @@ namespace SendingChecksOFD
             int fileCount = 0;
             string[] filePaths;
 
-            try
+            DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
+
+            if (dirInfo.Exists)
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
-
-                if (dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
-                {
-                    InitDirAndFile(pathDirTemp);
-                    InitDirAndFile(pathDirEoU);
-                    GetFailSite(); // загружаем файл с сайта
-                }
-
-               if (dirInfo.Exists)
-                {
-                    filePaths = Directory.GetFiles(pathDirEoU);
-                    fileCount = filePaths.Length;
-                }
-
-                if (fileCount < 12)
-                {
-                    WrateText("Ошибка. Количество файлом не соотвестыует нужному количеству");
-                }
-
+                filePaths = Directory.GetFiles(pathDirEoU);
+                fileCount = filePaths.Length;
             }
-            catch (Exception ex)
+
+            if (fileCount <12)
             {
-                WrateText("произошла ошибка при проверке существования папки EoU");
+                //Скачать или  установить папку Eou
             }
+
+            // FileInfo fileInfo = new FileInfo(pathFileZip);
+
             return fileCount;
         }
 
@@ -229,8 +160,10 @@ namespace SendingChecksOFD
         public void GetFailSite()
         {
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
-            string pathFile = @"C:\EoUTemp\EoU.zip";
-            string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/EoU.zip";
+            string pathFile = "D.exe";
+            // string serFtp = @"https://testkkm.000webhostapp.com/1/text.txt";
+            // string serFtp = @"https://testkkm.000webhostapp.com/1/rufus-3.6p.txt";
+            string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/D.txt";
 
             if (File.Exists(pathFile))
             {
@@ -333,7 +266,7 @@ namespace SendingChecksOFD
 
 
         /// <summary>
-        /// Тестовой запус программы
+        /// Тестовой запус программы EoU из папки с программой
         /// </summary>
         public async void StatrProgramm()
         {
@@ -346,8 +279,7 @@ namespace SendingChecksOFD
 
                 if (metHide)
                 {
-                   // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+                    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 }
 
                 await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
