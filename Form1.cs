@@ -20,8 +20,8 @@ namespace SendingChecksOFD
             InitializeComponent();
 
             bl = new BL();
-            bl.GetDirecEou();
-            bl.ZipArhivJob(); // распаковка 
+           // bl.GetDirecEou();
+           // bl.ZipArhivJob(); // распаковка 
             
 
             this.ShowInTaskbar = true;
@@ -70,7 +70,7 @@ namespace SendingChecksOFD
             }
 
           // labelInfo.Text = "Rjkbx{bl.GetDirecEou().ToString()}";
-            labelInfo.Text += bl.GetSettingPortEou();
+           // labelInfo.Text += bl.GetSettingPortEou();
         }
 
         private void InitForm()
@@ -140,9 +140,16 @@ namespace SendingChecksOFD
         //Событие при вервом отображении формы
         private void Form1_Shown(object sender, EventArgs e)
         {
-          
             MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}");
-           
+            bl.GetDirecEou();
+            bl.ZipArhivJob(); // распаковка 
+            labelInfo.Text += bl.GetSettingPortEou();
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            bl.KillProssec("EthOverUsb");
         }
     }
 }

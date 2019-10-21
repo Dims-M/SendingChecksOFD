@@ -40,6 +40,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             // buttonTesrtSatarEOU
             // 
-            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(21, 270);
+            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(8, 270);
             this.buttonTesrtSatarEOU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTesrtSatarEOU.Name = "buttonTesrtSatarEOU";
             this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(163, 66);
@@ -153,11 +154,22 @@
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 202);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 50);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Закрыть службу";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 357);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox2);
@@ -195,6 +207,7 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
