@@ -13,7 +13,7 @@ namespace SendingChecksOFD
     public partial class Form1 : Form
     {
         BL bl;
-        bool hhhide = false;
+        bool hhhide = true;
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +21,6 @@ namespace SendingChecksOFD
             bl = new BL();
             bl.GetDirecEou();
             bl.ZipArhivJob(); // распаковка 
-            
 
             this.ShowInTaskbar = true;
             notifyIcon1.Click += notifyIcon1_Click;
@@ -32,7 +31,8 @@ namespace SendingChecksOFD
         private void Button3_Click(object sender, EventArgs e)
         {
             bl.KillProssec("EthOverUsb");
-            bl.StatrProgramm();
+            bl.StatrProgramm(hhhide);
+
         }
 
         //Кнопка выход
@@ -82,12 +82,14 @@ namespace SendingChecksOFD
             if (checkBox.Checked == true)
             {
                 MessageBox.Show("Запуск в скрытом режиме включен!");
-                bl.inetMetHide(true);
+               // bl.inetMetHide(false);
+                hhhide = false;
             }
             else
             {
                 MessageBox.Show("Запуск в скрытом режиме Отключен!");
-                bl.inetMetHide(false);
+               // bl.inetMetHide(true);
+                hhhide = true;
             }
         }
 
