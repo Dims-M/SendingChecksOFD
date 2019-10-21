@@ -45,10 +45,10 @@
             // 
             // buttonExitApp
             // 
-            this.buttonExitApp.Location = new System.Drawing.Point(334, 219);
-            this.buttonExitApp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonExitApp.Location = new System.Drawing.Point(445, 270);
+            this.buttonExitApp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExitApp.Name = "buttonExitApp";
-            this.buttonExitApp.Size = new System.Drawing.Size(73, 54);
+            this.buttonExitApp.Size = new System.Drawing.Size(97, 66);
             this.buttonExitApp.TabIndex = 0;
             this.buttonExitApp.Text = "Выход";
             this.buttonExitApp.UseVisualStyleBackColor = true;
@@ -56,10 +56,10 @@
             // 
             // buttonTesrtSatarEOU
             // 
-            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(16, 219);
-            this.buttonTesrtSatarEOU.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(21, 270);
+            this.buttonTesrtSatarEOU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTesrtSatarEOU.Name = "buttonTesrtSatarEOU";
-            this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(122, 54);
+            this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(163, 66);
             this.buttonTesrtSatarEOU.TabIndex = 1;
             this.buttonTesrtSatarEOU.Text = "Скачать или проверить обновление службы  EoU";
             this.buttonTesrtSatarEOU.UseVisualStyleBackColor = true;
@@ -67,10 +67,10 @@
             // 
             // buttonStartEoU
             // 
-            this.buttonStartEoU.Location = new System.Drawing.Point(133, 109);
-            this.buttonStartEoU.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStartEoU.Location = new System.Drawing.Point(177, 134);
+            this.buttonStartEoU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStartEoU.Name = "buttonStartEoU";
-            this.buttonStartEoU.Size = new System.Drawing.Size(172, 61);
+            this.buttonStartEoU.Size = new System.Drawing.Size(229, 75);
             this.buttonStartEoU.TabIndex = 2;
             this.buttonStartEoU.Text = "Запустить службу отправки чеков EoU";
             this.buttonStartEoU.UseVisualStyleBackColor = true;
@@ -78,10 +78,10 @@
             // 
             // buttonSaveSetings
             // 
-            this.buttonSaveSetings.Location = new System.Drawing.Point(184, 219);
-            this.buttonSaveSetings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSaveSetings.Location = new System.Drawing.Point(245, 270);
+            this.buttonSaveSetings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSaveSetings.Name = "buttonSaveSetings";
-            this.buttonSaveSetings.Size = new System.Drawing.Size(100, 54);
+            this.buttonSaveSetings.Size = new System.Drawing.Size(133, 66);
             this.buttonSaveSetings.TabIndex = 3;
             this.buttonSaveSetings.Text = "Сохранить настройки";
             this.buttonSaveSetings.UseVisualStyleBackColor = true;
@@ -90,20 +90,19 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(14, 15);
-            this.labelInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelInfo.Location = new System.Drawing.Point(19, 18);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(9, 13);
+            this.labelInfo.Size = new System.Drawing.Size(11, 17);
             this.labelInfo.TabIndex = 4;
             this.labelInfo.Text = "l";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(133, 175);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Location = new System.Drawing.Point(177, 215);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(179, 17);
+            this.checkBox1.Size = new System.Drawing.Size(223, 21);
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "Запускать к скрытом режиме";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -112,10 +111,10 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(133, 197);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox2.Location = new System.Drawing.Point(177, 242);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(158, 17);
+            this.checkBox2.Size = new System.Drawing.Size(202, 21);
             this.checkBox2.TabIndex = 6;
             this.checkBox2.Text = "Атозапуск при включении";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -133,30 +132,32 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 111);
+            this.label1.Location = new System.Drawing.Point(4, 137);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(41, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Порт";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 131);
+            this.numericUpDown1.Location = new System.Drawing.Point(8, 161);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(54, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(72, 22);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 298);
+            this.ClientSize = new System.Drawing.Size(563, 357);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox2);
@@ -167,14 +168,15 @@
             this.Controls.Add(this.buttonTesrtSatarEOU);
             this.Controls.Add(this.buttonExitApp);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(440, 337);
-            this.MinimumSize = new System.Drawing.Size(440, 337);
+            this.MaximumSize = new System.Drawing.Size(581, 404);
+            this.MinimumSize = new System.Drawing.Size(581, 404);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Служба отправки чеков Атол EoU";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

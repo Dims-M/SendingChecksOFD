@@ -18,6 +18,7 @@ namespace SendingChecksOFD
         readonly string pathDir = @"C:\Program Files\Eou\";
      
         readonly string pathDirTemp = @"C:\EoUTemp\";
+        string pathDirEoU = @"C:\EoU\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
 
         string pathEoU = @"C:\EoU\EthOverUsb.exe";
@@ -141,8 +142,11 @@ namespace SendingChecksOFD
            return $"Порт дляотправки чеков установлен = {port[1]}";
         }
 
-
-        public  void SetSettingPortEou( int myPort)
+        /// <summary>
+        /// Открытие и созание файла настроек settings.ini
+        /// </summary>
+        /// <param name="myPort">Указать нужный порт</param>
+        public void SetSettingPortEou( int myPort)
         {
 
            // File.OpenWrite( ).Seek(-2, SeekOrigin.End);
@@ -190,7 +194,7 @@ namespace SendingChecksOFD
         /// </summary>
         public int GetDirecEou()
         {
-            string pathDirEoU = @"C:\EoU\";
+           // string pathDirEoU = @"C:\EoU\";
             int fileCount = 0;
             string[] filePaths;
 
@@ -222,6 +226,14 @@ namespace SendingChecksOFD
                 WrateText("произошла ошибка при проверке существования папки EoU");
             }
             return fileCount;
+        }
+
+
+        public bool proverkaDirFikeEou()
+        {
+
+
+            return true;
         }
 
         /// <summary>

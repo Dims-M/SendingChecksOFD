@@ -28,6 +28,8 @@ namespace SendingChecksOFD
 
         }
 
+
+
         //Установка службы eUF
         private void Button3_Click(object sender, EventArgs e)
         {
@@ -59,7 +61,8 @@ namespace SendingChecksOFD
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+
+           // bl.GetDirecEou();
             if (hhhide)
             {
                 this.WindowState = FormWindowState.Minimized;
@@ -115,6 +118,7 @@ namespace SendingChecksOFD
             this.WindowState = FormWindowState.Minimized;
            // this.Hide();
         }
+     
         //при загрузки иконки трея
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -130,6 +134,13 @@ namespace SendingChecksOFD
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        //Событие при вервом отображении формы
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            MessageBox.Show("Проверка наличия службы Eou");
+           
         }
     }
 }
