@@ -21,6 +21,7 @@ namespace SendingChecksOFD
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
 
         string pathEoU = @"C:\EoU\EthOverUsb.exe";
+        string pathEoUBat = @"C:\EoU\1Min.bat";
         string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
         string[] port = new string[10];
 
@@ -138,7 +139,7 @@ namespace SendingChecksOFD
         public string GetSettingPortEou()
         {
            port = File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
-           return $"Порт дляотправки чеков установлен = {port[1]}";
+           return $"Порт дляо тправки чеков установлен = {port[1]}";
         }
 
 
@@ -335,22 +336,41 @@ namespace SendingChecksOFD
         /// <summary>
         /// Тестовой запус программы
         /// </summary>
-        public async void StatrProgramm()
+        public async void StatrProgramm(bool swichc)
         {
             string errorLog = $"t\n";
             try
             {
-                Process iStartProcess = new Process(); // новый процесс
-                iStartProcess.StartInfo.FileName = pathEoU; // путь к запускаемому файлу
-                iStartProcess.StartInfo.Arguments = " -e";
+                Process iStartProcess = new Process();
+                Process iStartProcess2 = new Process();// новый процесс
 
-                if (metHide)
+                if (swichc)
                 {
-                   // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+                    iStartProcess.StartInfo.FileName = pathEoU; // путь к запускаемому файлуИП БИЛАЛОВ
+                    iStartProcess.StartInfo.Arguments = " -e";
+                    await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
+                   // return;
                 }
 
-                await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
+                else
+                {
+                    iStartProcess2.StartInfo.FileName = pathEoUBat; //запуск батника  
+                    // iStartProcess.StartInfo.Arguments = " -MINIMIZED";
+                    iStartProcess.StartInfo.Arguments = " -e";
+                    await Task.Run(() => iStartProcess2.Start()); // запуск программы лечения
+                }
+               // iStartProcess2.StartInfo.FileName = pathEoUBat; //запуск батника
+                // iStartProcess.StartInfo.Arguments = " -MINIMIZED";
+                //iStartProcess.StartInfo.Arguments = " -e";
+               // iStartProcess.StartInfo.Arguments = " -fullscreen";
+
+                //if (metHide)
+                //{
+                //   // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                //    iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+                //}
+
+               // await Task.Run(() => iStartProcess.Start()); // запуск программы лечения
                 errorLog += $"Программа удачно запущена{pathEoU}\n";
                 WrateText(errorLog);
             }
