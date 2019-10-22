@@ -52,6 +52,9 @@ namespace SendingChecksOFD
         //Работа с автозагрузкой в папку  
         //http://www.cyberforum.ru/csharp-beginners/thread2062011.html
 
+        //отпрвка емайла
+       //https://programming-csharp.ru/2018/01/03/%d1%84%d0%be%d1%80%d0%bc%d0%b0-%d0%be%d0%b1%d1%80%d0%b0%d1%82%d0%bd%d0%be%d0%b9-%d1%81%d0%b2%d1%8f%d0%b7%d0%b8-%d0%bd%d0%b0-c/
+
         /// <summary>
         /// включение, отключение скрытого режима
         /// </summary>
