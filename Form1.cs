@@ -31,7 +31,7 @@ namespace SendingChecksOFD
 
 
 
-        //Остановка службы eUF
+        //Запуск службы eUF
         private void Button3_Click(object sender, EventArgs e)
         {
             bl.KillProssec("EthOverUsb");
@@ -55,9 +55,10 @@ namespace SendingChecksOFD
            // bl.GetSetingStarMode();
         }
 
-        //Тестовый запуск консоли еуф
+        //Тестовый запуск Проверки обновления
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
+            bl.GetFailSite();  //загрузка службы еоф
             MessageBox.Show("Проверка обновления новой версии. ", "Служба отправки чеков Атол EoU 1.0.0.2", MessageBoxButtons.YesNoCancel);
            
             // bl.GetFailSite();  //загрузка службы еоф
@@ -65,7 +66,7 @@ namespace SendingChecksOFD
            // bl.DounloadFailSite(); //загрузка и распаковка обновления
 
             if (DialogResult.OK == buttonTesrtSatarEOU.DialogResult)
-            {
+            {   
                 label2.Text += bl.GetUbtateApp(); ; // проверка и загрузка обнолвнеия программы
                 bl.DounloadFailSite(); //загрузка и распаковка обновления
                 MessageBox.Show("Проверка обновления новой версии Загруженно посмотрите во временной папки.", "Служба отправки чеков Атол EoU 1.0.0.2");
@@ -143,6 +144,7 @@ namespace SendingChecksOFD
         {
             this.WindowState = FormWindowState.Normal;
         }
+     
         //Событие клика 
         void notifyIcon1_Click(object sender, EventArgs e)
         {
@@ -159,8 +161,8 @@ namespace SendingChecksOFD
         private void Form1_Shown(object sender, EventArgs e)
         {
             MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}");
+            bl.GetDirecEou(); //Cjplfybt папок
             bl.ZipArhivJob(); // распаковка
-            bl.GetDirecEou();
             labelInfo.Text += bl.GetSettingPortEou();
 
         }

@@ -110,7 +110,7 @@ namespace SendingChecksOFD
             }
             catch(Exception ex)
             {
-                WrateText(" Ошибка при закрытии процесса");
+                WrateText(" Ошибка при закрытии процесса"+ex);
             }
              
         }
@@ -240,9 +240,10 @@ namespace SendingChecksOFD
             try
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
+              //  Directory.Delete(pathDir);
 
-                if (dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
-                {
+                //if (!dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
+                //{
                     InitDirAndFile(pathDirTemp);
                     InitDirAndFile(pathDirEoU);
                   //  GetSetingStarMode(0); //запуск 
@@ -252,7 +253,7 @@ namespace SendingChecksOFD
                     filePaths = Directory.GetFiles(pathDirEoU);
                     fileCount = filePaths.Length;
 
-                }
+                //}
 
                //if (dirInfo.Exists)
                // {
@@ -268,7 +269,7 @@ namespace SendingChecksOFD
             }
             catch (Exception ex)
             {
-                WrateText("произошла ошибка при проверке существования папки EoU");
+                WrateText("произошла ошибка при проверке существования папки EoU"+ex);
             }
             return fileCount;
         }
@@ -374,6 +375,8 @@ namespace SendingChecksOFD
 
                 }
 
+                File.Delete(pathFile);
+
             }
 
             return tempMessahc;
@@ -442,7 +445,7 @@ namespace SendingChecksOFD
 
 
         /// <summary>
-        /// Тестовой запус программы
+        /// Тестовой запус Службы EoU
         /// </summary>
         public async void StatrProgramm()
         {
