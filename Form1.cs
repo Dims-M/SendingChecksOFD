@@ -31,7 +31,7 @@ namespace SendingChecksOFD
 
 
 
-        //Установка службы eUF
+        //Остановка службы eUF
         private void Button3_Click(object sender, EventArgs e)
         {
             bl.KillProssec("EthOverUsb");
@@ -58,7 +58,8 @@ namespace SendingChecksOFD
         //Тестовый запуск консоли еуф
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
-            bl.GetFailSite();
+            bl.GetFailSite();  //закрызка службы еоф
+            label2.Text += bl.GetUbtateApp(); ; // проверка и загрузка обнолвнеия программы
         }
 
         //При запуске формы

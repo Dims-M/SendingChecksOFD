@@ -26,6 +26,7 @@ namespace SendingChecksOFD
         string[] port = new string[10];
 
       string tempInfo = "";
+      string  tempMessahc = "";
 
       static  bool metHide = false;
       static  bool avtoLoad = true;
@@ -310,22 +311,22 @@ namespace SendingChecksOFD
         /// <summary>
         /// Проверка и получение обновление программы
         /// </summary>
-        public async void GetUbtateApp()
+        public string   GetUbtateApp() //async
         {
 
             const string pathFile = "ver.txt";
             // const string path = @"C:\SomeDir\";
-            const string path = @"C:\Program Files\SomeDir";
+           // const string path = @"C:\Program Files\SomeDir";
             const string serFtp = @"https://testkkm.000webhostapp.com/hz/Ver.txt";
+            //string tempMessahc = "";
 
-
-            FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo("HumiliationTeamViewer.exe");
+            FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo("SendingChecksOFD.exe");
             // Строка с версией: myFileVersionInfo.FileVersion;
             string versApp = myFileVersionInfo.FileVersion.ToLower();
 
             // double versApp2 = Double.Parse(versApp);
 
-            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            DirectoryInfo dirInfo = new DirectoryInfo(pathDirTemp);
 
             if (!dirInfo.Exists)
             {
@@ -335,13 +336,14 @@ namespace SendingChecksOFD
             //Получение версии на сервере
             using (var web = new WebClient())
             {
-                await Task.Run(() => web.DownloadFile(serFtp, path + "temp.zip"));
+               // await Task.Run(() => web.DownloadFile(serFtp, pathDirTemp + "ver.txt"));
+                web.DownloadFile(serFtp, pathDirTemp + "ver.txt");
                 // аисинхроный запуск
                 // скачиваем откуда и куда
 
             }
             // чтение из файла и проверяем текущую версию файла и нового на сервере
-            using (FileStream fstream = File.OpenRead(path + pathFile))
+            using (FileStream fstream = File.OpenRead(pathDirTemp + pathFile))
             {
                 // преобразуем строку в байты
                 byte[] array = new byte[fstream.Length];
@@ -359,18 +361,29 @@ namespace SendingChecksOFD
                     if (!versApp.Contains(itemMass))
                     //if (versApp2  < temppp)
                     {
+                        tempMessahc += $"Требуется обновление программы, текущая версия {versApp} новая {itemMass}";
                         // MessageBox.Show($"Требуется обновление программы, текущая версия {versApp} новая {itemMass}");
 
                     }
 
                     else
                     {
+                        tempMessahc += "Обновление программы не требуется, текущая версия{versApp} новая {itemMass}";
                         // MessageBox.Show($"Обновление программы не требуется, текущая версия{versApp} новая {itemMass}");
                     }
 
                 }
 
             }
+
+            return tempMessahc;
+        }
+
+
+        public string ProverkaVersion()
+        {
+            GetUbtateApp();
+            return tempMessahc;
         }
 
         //запись в файл
