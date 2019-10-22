@@ -210,5 +210,10 @@ namespace SendingChecksOFD
         {
             bl.GetFailSite();  //загрузка службы еоф
         }
+
+        private void LabelInfo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

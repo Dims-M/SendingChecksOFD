@@ -84,16 +84,21 @@ namespace SendingChecksOFD
             string b = @"C:\EoU\";
             string c = s3;
 
-            if (swixh)
+            try
             {
-                // var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
-                //  key.SetValue("Отправка чеков в ОФД", @"C:\EoU\EthOverUsb.exe");
-                // String s = System.Environment.GetEnvironmentVariable("programfiles");
-                //  String s2 = System.Environment.GetEnvironmentVariable("Startup");
-                //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
+            if (swixh)
+                {
+                    #region НЕ смотреть
+                    // var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                    // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
+                    //  key.SetValue("Отправка чеков в ОФД", @"C:\EoU\EthOverUsb.exe");
+                    // String s = System.Environment.GetEnvironmentVariable("programfiles");
+                    //  String s2 = System.Environment.GetEnvironmentVariable("Startup");
+                    //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
+                    //  File.Delete(c + a);
+                    #endregion
 
-                File.Copy(b + a, c + a);
+                    File.Copy(b + a, c + a);
                 //File.Copy(@"C:\EoU\~runme", patchStartup);
             }
             
@@ -105,7 +110,11 @@ namespace SendingChecksOFD
                 File.Delete(c + a);
             }
 
-
+            }
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при работе с установкой автозагрузки"+ex);
+            }
         }
 
         /// <summary>

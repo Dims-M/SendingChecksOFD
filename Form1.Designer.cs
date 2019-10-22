@@ -30,6 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настроитьЧтоНибутьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonTesrtSatarEOU = new System.Windows.Forms.Button();
             this.buttonStartEoU = new System.Windows.Forms.Button();
@@ -37,25 +48,94 @@
             this.labelInfo = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.button2 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.настроитьЧтоНибутьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.скачатьОтдельноСлужбуEoUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.выходToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem,
+            this.настройкиToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(563, 28);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipText = "Отправка чеков в ОФД";
+            this.notifyIcon1.BalloonTipTitle = "Отправка чеков в ОФД 1";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Отправка чеков в ОФД";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.настроитьЧтоНибутьToolStripMenuItem,
+            this.проверитьОбновлениеToolStripMenuItem});
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // настроитьЧтоНибутьToolStripMenuItem
+            // 
+            this.настроитьЧтоНибутьToolStripMenuItem.Name = "настроитьЧтоНибутьToolStripMenuItem";
+            this.настроитьЧтоНибутьToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
+            this.настроитьЧтоНибутьToolStripMenuItem.Text = "Настроить что нибуть";
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
+            // проверитьОбновлениеToolStripMenuItem
+            // 
+            this.проверитьОбновлениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem,
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem});
+            this.проверитьОбновлениеToolStripMenuItem.Name = "проверитьОбновлениеToolStripMenuItem";
+            this.проверитьОбновлениеToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
+            this.проверитьОбновлениеToolStripMenuItem.Text = "Проверить обновление";
+            // 
+            // запуститьПроверкуИСканиваниеToolStripMenuItem
+            // 
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Name = "запуститьПроверкуИСканиваниеToolStripMenuItem";
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Text = "Запустить проверку и сканивание";
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Click += new System.EventHandler(this.ЗапуститьПроверкуИСканиваниеToolStripMenuItem_Click);
+            // 
+            // скачатьОтдельноСлужбуEoUToolStripMenuItem
+            // 
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Name = "скачатьОтдельноСлужбуEoUToolStripMenuItem";
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Text = "Скачать отдельно службу EoU";
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Click += new System.EventHandler(this.СкачатьОтдельноСлужбуEoUToolStripMenuItem_Click);
             // 
             // buttonExitApp
             // 
@@ -105,7 +185,7 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(19, 35);
+            this.labelInfo.Location = new System.Drawing.Point(19, 53);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(11, 17);
             this.labelInfo.TabIndex = 4;
@@ -134,15 +214,6 @@
             this.checkBox2.Text = "Атозапуск при включении";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.BalloonTipText = "Отправка чеков в ОФД";
-            this.notifyIcon1.BalloonTipTitle = "Отправка чеков в ОФД 1";
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Отправка чеков в ОФД";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
             // 
             // label1
             // 
@@ -196,78 +267,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.настройкиToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(563, 28);
-            this.menuStrip1.TabIndex = 12;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // файлToolStripMenuItem
-            // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выходToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
-            this.файлToolStripMenuItem.Text = "Файл";
-            // 
-            // выходToolStripMenuItem
-            // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
-            // 
-            // настройкиToolStripMenuItem
-            // 
-            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.настроитьЧтоНибутьToolStripMenuItem,
-            this.проверитьОбновлениеToolStripMenuItem});
-            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
-            this.настройкиToolStripMenuItem.Text = "Настройки";
-            // 
-            // настроитьЧтоНибутьToolStripMenuItem
-            // 
-            this.настроитьЧтоНибутьToolStripMenuItem.Name = "настроитьЧтоНибутьToolStripMenuItem";
-            this.настроитьЧтоНибутьToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
-            this.настроитьЧтоНибутьToolStripMenuItem.Text = "Настроить что нибуть";
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            // 
-            // проверитьОбновлениеToolStripMenuItem
-            // 
-            this.проверитьОбновлениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem,
-            this.скачатьОтдельноСлужбуEoUToolStripMenuItem});
-            this.проверитьОбновлениеToolStripMenuItem.Name = "проверитьОбновлениеToolStripMenuItem";
-            this.проверитьОбновлениеToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
-            this.проверитьОбновлениеToolStripMenuItem.Text = "Проверить обновление";
-            // 
-            // запуститьПроверкуИСканиваниеToolStripMenuItem
-            // 
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Name = "запуститьПроверкуИСканиваниеToolStripMenuItem";
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Text = "Запустить проверку и сканивание";
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem.Click += new System.EventHandler(this.ЗапуститьПроверкуИСканиваниеToolStripMenuItem_Click);
-            // 
-            // скачатьОтдельноСлужбуEoUToolStripMenuItem
-            // 
-            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Name = "скачатьОтдельноСлужбуEoUToolStripMenuItem";
-            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
-            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Text = "Скачать отдельно службу EoU";
-            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Click += new System.EventHandler(this.СкачатьОтдельноСлужбуEoUToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -297,9 +296,9 @@
             this.Text = "Служба отправки чеков Атол EoU 1.0.0.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,6 +306,17 @@
 
         #endregion
 
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настроитьЧтоНибутьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запуститьПроверкуИСканиваниеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem скачатьОтдельноСлужбуEoUToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.Button buttonExitApp;
         private System.Windows.Forms.Button buttonTesrtSatarEOU;
         private System.Windows.Forms.Button buttonStartEoU;
@@ -314,22 +324,11 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem настроитьЧтоНибутьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem запуститьПроверкуИСканиваниеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem скачатьОтдельноСлужбуEoUToolStripMenuItem;
     }
 }
 
