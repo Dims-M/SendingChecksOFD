@@ -52,6 +52,7 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запуститьПроверкуИСканиваниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -247,7 +248,8 @@
             // проверитьОбновлениеToolStripMenuItem
             // 
             this.проверитьОбновлениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.запуститьПроверкуИСканиваниеToolStripMenuItem});
+            this.запуститьПроверкуИСканиваниеToolStripMenuItem,
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem});
             this.проверитьОбновлениеToolStripMenuItem.Name = "проверитьОбновлениеToolStripMenuItem";
             this.проверитьОбновлениеToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
             this.проверитьОбновлениеToolStripMenuItem.Text = "Проверить обновление";
@@ -258,6 +260,13 @@
             this.запуститьПроверкуИСканиваниеToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
             this.запуститьПроверкуИСканиваниеToolStripMenuItem.Text = "Запустить проверку и сканивание";
             this.запуститьПроверкуИСканиваниеToolStripMenuItem.Click += new System.EventHandler(this.ЗапуститьПроверкуИСканиваниеToolStripMenuItem_Click);
+            // 
+            // скачатьОтдельноСлужбуEoUToolStripMenuItem
+            // 
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Name = "скачатьОтдельноСлужбуEoUToolStripMenuItem";
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Text = "Скачать отдельно службу EoU";
+            this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Click += new System.EventHandler(this.СкачатьОтдельноСлужбуEoUToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -320,6 +329,7 @@
         private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem запуститьПроверкуИСканиваниеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem скачатьОтдельноСлужбуEoUToolStripMenuItem;
     }
 }
 

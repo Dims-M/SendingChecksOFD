@@ -202,8 +202,13 @@ namespace SendingChecksOFD
 
         private void ЗапуститьПроверкуИСканиваниеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bl.GetFailSite();  //загрузка службы еоф
+            //bl.GetFailSite();  //загрузка службы еоф
+            bl.DounloadFailSite();
+        }
 
+        private void СкачатьОтдельноСлужбуEoUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bl.GetFailSite();  //загрузка службы еоф
         }
     }
 }
