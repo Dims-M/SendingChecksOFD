@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,9 +120,9 @@ namespace SendingChecksOFD
             if (checkBox.Checked == true)
             {
                 MessageBox.Show("Запуск при загрузке включен!");
-               
 
-                 
+                bl.voidRegAvtoLoad(true);
+
 
             }
             else
@@ -129,6 +130,7 @@ namespace SendingChecksOFD
                 MessageBox.Show("Запуск при загрузке Отключен. !");
                // bl.GetSetingStarMode(0);
                 bl.voidRegAvtoLoad(false);
+
             }
         }
 
@@ -170,6 +172,25 @@ namespace SendingChecksOFD
         private void Button1_Click(object sender, EventArgs e)
         {
             bl.KillProssec("EthOverUsb");
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            String s = System.Environment.GetEnvironmentVariable("programfiles");
+            String s2 = System.Environment.GetEnvironmentVariable("Startup");
+            //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
+            String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            s3 += "\\";
+            bl.WrateText("Строка подключения \n"+s3);
+            MessageBox.Show(s3);
+
+            string a = "~runme.lnk";
+            string b = @"C:\EoU\";
+            string c = s3;
+            File.Copy(b + a, c + a);
+
+            //  File.Copy(@"C:\EoU\~runme", s3);
+           // File.Copy(@"C:\EoU\EthOverUsb.exe", $"{s3}~runme.lnk");
         }
     }
 }

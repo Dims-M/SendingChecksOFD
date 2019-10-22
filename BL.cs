@@ -20,6 +20,7 @@ namespace SendingChecksOFD
         readonly string pathDirTemp = @"C:\EoUTemp\";
         string pathDirEoU = @"C:\EoU\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
+        private readonly string patchStartup = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup";
 
         string pathEoU = @"C:\EoU\EthOverUsb.exe";
         string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
@@ -33,6 +34,7 @@ namespace SendingChecksOFD
 
         //автозапуск приложения через реестр
         // http://www.cyberforum.ru/csharp-beginners/thread282803.html
+        // http://www.cyberforum.ru/csharp-net/thread104649.html и переменные среды
         //скрытие формы
 
         //Количество файлов в папке
@@ -44,7 +46,10 @@ namespace SendingChecksOFD
         //Пример сохранения данных программы
         //https://www.youtube.com/watch?v=I6Gge6_8Svg&t=0s
         //https://www.youtube.com/watch?v=CHTd5IMVkPI&t=0s win prov
-       // https://www.youtube.com/watch?v=Mb3S2IK3NzI&t=2230s
+        // https://www.youtube.com/watch?v=Mb3S2IK3NzI&t=2230s
+
+        //Работа с автозагрузкой в папку   кзагрузкой
+        //http://www.cyberforum.ru/csharp-beginners/thread2062011.html
 
         /// <summary>
         /// включение, отключение скрытого режима
@@ -70,20 +75,39 @@ namespace SendingChecksOFD
         /// <param name="swixh"></param>
         public void voidRegAvtoLoad( bool swixh)
         {
+            String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            s3 += "\\";
+            //WrateText("Строка подключения \n" + s3);
+            // MessageBox.Show(s3);
+
+            string a = "~runme.lnk";
+            string b = @"C:\EoU\";
+            string c = s3;
+
             if (swixh)
             {
-                var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-               // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
-                key.SetValue("Отправка чеков в ОФД", @"C:\EoU\EthOverUsb.exe");
+                // var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                // key.SetValue("Отправка чеков в ОФД", Application.ExecutablePath);
+                //  key.SetValue("Отправка чеков в ОФД", @"C:\EoU\EthOverUsb.exe");
+                // String s = System.Environment.GetEnvironmentVariable("programfiles");
+                //  String s2 = System.Environment.GetEnvironmentVariable("Startup");
+                //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
 
+                
+                File.Copy(b + a, c + a);
+                //File.Copy(@"C:\EoU\~runme", patchStartup);
             }
              
 
             else 
             {
-                var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                key.DeleteValue("Отправка чеков в ОФД", true);
+              //  var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                //  key.DeleteValue("Отправка чеков в ОФД",true);
+                // File.Delete(@"C:\EoU\EthOverUsb.exe");
+                File.Delete(c + a);
             }
+
+
         }
 
         /// <summary>
