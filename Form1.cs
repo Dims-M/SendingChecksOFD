@@ -160,7 +160,7 @@ namespace SendingChecksOFD
         //Событие при вервом отображении формы
         private void Form1_Shown(object sender, EventArgs e)
         {
-            MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}");
+            MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}\n Скачивание новор версии дистрбутива EoU");
             bl.GetDirecEou(); //Cjplfybt папок
             bl.ZipArhivJob(); // распаковка
             labelInfo.Text += bl.GetSettingPortEou();
