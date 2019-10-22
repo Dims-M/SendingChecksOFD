@@ -93,12 +93,10 @@ namespace SendingChecksOFD
                 //  String s2 = System.Environment.GetEnvironmentVariable("Startup");
                 //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
 
-                
                 File.Copy(b + a, c + a);
                 //File.Copy(@"C:\EoU\~runme", patchStartup);
             }
-             
-
+            
             else 
             {
               //  var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
