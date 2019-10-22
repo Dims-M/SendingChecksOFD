@@ -131,7 +131,7 @@ namespace SendingChecksOFD
                 WrateText("Ошибка при разорхивации архива EoU\n"+ ex);
             }
 
-            File.Delete(zipPath);
+          //  File.Delete(zipPath);
         }
 
         /// <summary>
