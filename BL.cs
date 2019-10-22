@@ -117,12 +117,6 @@ namespace SendingChecksOFD
         }
 
 
-        public void UbdeidApp()
-        {
-
-        }
-
-
         //закрыть нужны процесс по имени.
         public void KillProssec(string nameProssec)
         {
@@ -255,6 +249,8 @@ namespace SendingChecksOFD
         /// </summary>
         public int GetDirecEou()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
            // string pathDirEoU = @"C:\EoU\";
             int fileCount = 0;
             string[] filePaths;
@@ -293,7 +289,11 @@ namespace SendingChecksOFD
             {
                 WrateText("произошла ошибка при проверке существования папки EoU"+ex);
             }
+
+            stopwatch.Stop();
+          //  WrateText(stopwatch."");
             return fileCount;
+            
         }
 
 

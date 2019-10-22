@@ -192,5 +192,18 @@ namespace SendingChecksOFD
             //  File.Copy(@"C:\EoU\~runme", s3);
            // File.Copy(@"C:\EoU\EthOverUsb.exe", $"{s3}~runme.lnk");
         }
+
+        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bl.SetSettingPortEou(decimal.ToInt32(numericUpDown1.Value));
+            Close();
+            Application.Exit();
+        }
+
+        private void ЗапуститьПроверкуИСканиваниеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bl.GetFailSite();  //загрузка службы еоф
+
+        }
     }
 }
