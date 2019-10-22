@@ -42,6 +42,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             // 
             // buttonTesrtSatarEOU
             // 
+            this.buttonTesrtSatarEOU.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(8, 270);
             this.buttonTesrtSatarEOU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTesrtSatarEOU.Name = "buttonTesrtSatarEOU";
@@ -219,6 +221,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }
 

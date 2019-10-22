@@ -58,9 +58,19 @@ namespace SendingChecksOFD
         //Тестовый запуск консоли еуф
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
-            bl.GetFailSite();  //закрызка службы еоф
+            MessageBox.Show("Проверка обновления новой версии. ", "Служба отправки чеков Атол EoU 1.0.0.2", MessageBoxButtons.YesNoCancel);
+           
+            // bl.GetFailSite();  //загрузка службы еоф
            // label2.Text += bl.GetUbtateApp(); ; // проверка и загрузка обнолвнеия программы
-            bl.DounloadFailSite(); //загрузка и распаковка обновления
+           // bl.DounloadFailSite(); //загрузка и распаковка обновления
+
+            if (DialogResult.OK == buttonTesrtSatarEOU.DialogResult)
+            {
+                label2.Text += bl.GetUbtateApp(); ; // проверка и загрузка обнолвнеия программы
+                bl.DounloadFailSite(); //загрузка и распаковка обновления
+                MessageBox.Show("Проверка обновления новой версии Загруженно посмотрите во временной папки.", "Служба отправки чеков Атол EoU 1.0.0.2");
+            }
+           
         }
 
         //При запуске формы
