@@ -380,6 +380,45 @@ namespace SendingChecksOFD
         }
 
 
+        public void DounloadFailSite()
+        {
+            string errorLog = $"{DateTime.Now.ToString()}\t\n";
+            string pathFile = @"C:\EoUTemp\UpdateSendingChecksOFD.zip";
+            string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/SendingChecksOFD.zip";
+
+            File.Delete(pathFile);
+            File.Delete("UpdateSendingChecksOFD.exe");
+
+            //if (File.Exists(pathFile))
+            //{
+            //    File.Delete(pathFile);
+            //    errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n И будет удален.";
+            //    WrateText(errorLog);
+            //}
+
+            using (var web = new WebClient())
+                {
+
+                    // скачиваем откуда и куда
+                    web.DownloadFile(serFtp, pathFile);
+                }
+
+            //string zipPath = @"C:\EoUTemp\EoU.zip";
+            string extractPath = @"C:\EoUTemp\";
+
+            try
+            {
+                ZipFile.ExtractToDirectory(pathFile, extractPath);
+            }
+
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при разорхивации архива EoU\n" + ex);
+            }
+
+
+        }
+
         public string ProverkaVersion()
         {
             GetUbtateApp();

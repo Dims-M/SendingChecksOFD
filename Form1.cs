@@ -59,7 +59,8 @@ namespace SendingChecksOFD
         private void ButtonTesrtSatarEOU_Click(object sender, EventArgs e)
         {
             bl.GetFailSite();  //закрызка службы еоф
-            label2.Text += bl.GetUbtateApp(); ; // проверка и загрузка обнолвнеия программы
+           // label2.Text += bl.GetUbtateApp(); ; // проверка и загрузка обнолвнеия программы
+            bl.DounloadFailSite(); //загрузка и распаковка обновления
         }
 
         //При запуске формы
