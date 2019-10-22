@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,7 +49,7 @@ namespace SendingChecksOFD
         //https://www.youtube.com/watch?v=CHTd5IMVkPI&t=0s win prov
         // https://www.youtube.com/watch?v=Mb3S2IK3NzI&t=2230s
 
-        //Работа с автозагрузкой в папку   кзагрузкой
+        //Работа с автозагрузкой в папку  
         //http://www.cyberforum.ru/csharp-beginners/thread2062011.html
 
         /// <summary>
@@ -413,7 +414,9 @@ namespace SendingChecksOFD
             return tempMessahc;
         }
 
-
+        /// <summary>
+        /// Скачивание новой версии программы и  распаковка
+        /// </summary>
         public void DounloadFailSite()
         {
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
@@ -474,6 +477,36 @@ namespace SendingChecksOFD
         }
 
 
+        public void MySendMai(string bodyMail,  string subjectMail)
+        {
+            const string passMail = "51215045avto";
+            string nameAuthor = "Пользователь ";
+            MailAddress from = new MailAddress("o.avto@i-cks.ru", nameAuthor); // Отправка сообщений. Элект ящик
+            MailAddress to= new MailAddress("rabolan@mail.ru", nameAuthor);
+
+            try
+            {
+
+            //клиен для отправки письма
+            SmtpClient smtp = new SmtpClient("smtp.mail.ru", 25);
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // указываем способ доставки
+            smtp.Credentials = new NetworkCredential(from.Address, passMail);
+            smtp.EnableSsl = true; // шифровка сообщений
+            smtp.Timeout = 20000; //тайаут ожидания
+
+            MailMessage mail = new MailMessage(from, to); // указываем с какого ящика отправлять и куда
+             mail.Subject = subjectMail+"Обьект";
+             mail.Body = bodyMail+"Тело письма";
+
+            smtp.Send(mail); //отправка сообщения
+
+            }
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при отправке письма"+ex);
+            }
+
+        }
 
         /// <summary>
         /// Тестовой запус Службы EoU

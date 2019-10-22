@@ -176,18 +176,24 @@ namespace SendingChecksOFD
 
         private void Button2_Click(object sender, EventArgs e)
         {
+
+
             String s = System.Environment.GetEnvironmentVariable("programfiles");
             String s2 = System.Environment.GetEnvironmentVariable("Startup");
-            //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
-            String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-            s3 += "\\";
-            bl.WrateText("Строка подключения \n"+s3);
-            MessageBox.Show(s3);
 
-            string a = "~runme.lnk";
-            string b = @"C:\EoU\";
-            string c = s3;
-            File.Copy(b + a, c + a);
+            bl.MySendMai("От Кого","типо тела письма");
+
+
+            //  //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
+            String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+           // s3 += "\\";
+          //  bl.WrateText("Строка подключения \n"+s3);
+           // MessageBox.Show(s3);
+
+            //string a = "~runme.lnk";
+            //string b = @"C:\EoU\";
+            //string c = s3;
+           // File.Copy(b + a, c + a);
 
             //  File.Copy(@"C:\EoU\~runme", s3);
            // File.Copy(@"C:\EoU\EthOverUsb.exe", $"{s3}~runme.lnk");
@@ -216,4 +222,9 @@ namespace SendingChecksOFD
 
         }
     }
+
+
+   //дОБАВТЬ ФОРМУ ДЛЯ РАботы с ккм атол
+   /// Логирование и отправка сообщений
+   ///
 }
