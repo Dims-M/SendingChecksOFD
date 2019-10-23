@@ -221,6 +221,15 @@ namespace SendingChecksOFD
         {
 
         }
+        //**********РАБОТА С ККЕ*****
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //Кнопка Поиск и работа с ККТ Атол
+        private void ПоискИПодключениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormKKM formKKM = new FormKKM();
+            formKKM.Show();
+        }
     }
 
 
