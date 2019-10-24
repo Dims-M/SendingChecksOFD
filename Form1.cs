@@ -262,6 +262,12 @@ namespace SendingChecksOFD
         {
             System.Diagnostics.Process.Start("https://yadi.sk/d/dAtjl1D4yZb8Mw");
         }
+
+        private void НаписатьРазработчикуИлиВТехподтержкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.MessageForm1 messageForm = new Forms.MessageForm1();
+            messageForm.Show();
+        }
     }
 
 

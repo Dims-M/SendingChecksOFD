@@ -38,6 +38,10 @@
             this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запуститьПроверкуИСканиваниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.скачатьОтдельноСлужбуEoUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скаатьДрайвераАтол10ХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скаатьДрайвераАтол816ХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скачатьДаннуюПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дополнительноеПОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.работаСКассойАтолToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поискИПодключениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,10 +62,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.скаатьДрайвераАтол10ХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.скаатьДрайвераАтол816ХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.скачатьДаннуюПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.дополнительноеПОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -121,7 +121,7 @@
             this.запуститьПроверкуИСканиваниеToolStripMenuItem,
             this.скачатьОтдельноСлужбуEoUToolStripMenuItem});
             this.проверитьОбновлениеToolStripMenuItem.Name = "проверитьОбновлениеToolStripMenuItem";
-            this.проверитьОбновлениеToolStripMenuItem.Size = new System.Drawing.Size(259, 26);
+            this.проверитьОбновлениеToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
             this.проверитьОбновлениеToolStripMenuItem.Text = "Проверить обновление";
             // 
             // запуститьПроверкуИСканиваниеToolStripMenuItem
@@ -137,6 +137,34 @@
             this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
             this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Text = "Скачать отдельно службу EoU";
             this.скачатьОтдельноСлужбуEoUToolStripMenuItem.Click += new System.EventHandler(this.СкачатьОтдельноСлужбуEoUToolStripMenuItem_Click);
+            // 
+            // скаатьДрайвераАтол10ХToolStripMenuItem
+            // 
+            this.скаатьДрайвераАтол10ХToolStripMenuItem.Name = "скаатьДрайвераАтол10ХToolStripMenuItem";
+            this.скаатьДрайвераАтол10ХToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
+            this.скаатьДрайвераАтол10ХToolStripMenuItem.Text = "Скачать драйвера Атол 10Х";
+            this.скаатьДрайвераАтол10ХToolStripMenuItem.Click += new System.EventHandler(this.СкаатьДрайвераАтол10ХToolStripMenuItem_Click);
+            // 
+            // скаатьДрайвераАтол816ХToolStripMenuItem
+            // 
+            this.скаатьДрайвераАтол816ХToolStripMenuItem.Name = "скаатьДрайвераАтол816ХToolStripMenuItem";
+            this.скаатьДрайвераАтол816ХToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
+            this.скаатьДрайвераАтол816ХToolStripMenuItem.Text = "Скачать драйвера Атол 8.16Х";
+            this.скаатьДрайвераАтол816ХToolStripMenuItem.Click += new System.EventHandler(this.СкаатьДрайвераАтол816ХToolStripMenuItem_Click);
+            // 
+            // скачатьДаннуюПрограммуToolStripMenuItem
+            // 
+            this.скачатьДаннуюПрограммуToolStripMenuItem.Name = "скачатьДаннуюПрограммуToolStripMenuItem";
+            this.скачатьДаннуюПрограммуToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
+            this.скачатьДаннуюПрограммуToolStripMenuItem.Text = "Скачать данную программу. ";
+            this.скачатьДаннуюПрограммуToolStripMenuItem.Click += new System.EventHandler(this.СкачатьДаннуюПрограммуToolStripMenuItem_Click);
+            // 
+            // дополнительноеПОToolStripMenuItem
+            // 
+            this.дополнительноеПОToolStripMenuItem.Name = "дополнительноеПОToolStripMenuItem";
+            this.дополнительноеПОToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
+            this.дополнительноеПОToolStripMenuItem.Text = "Дополнительное ПО";
+            this.дополнительноеПОToolStripMenuItem.Click += new System.EventHandler(this.ДополнительноеПОToolStripMenuItem_Click);
             // 
             // работаСКассойАтолToolStripMenuItem
             // 
@@ -174,6 +202,7 @@
             this.написатьРазработчикуИлиВТехподтержкуToolStripMenuItem.Name = "написатьРазработчикуИлиВТехподтержкуToolStripMenuItem";
             this.написатьРазработчикуИлиВТехподтержкуToolStripMenuItem.Size = new System.Drawing.Size(399, 26);
             this.написатьРазработчикуИлиВТехподтержкуToolStripMenuItem.Text = "Написать разработчику или в техподтержку";
+            this.написатьРазработчикуИлиВТехподтержкуToolStripMenuItem.Click += new System.EventHandler(this.НаписатьРазработчикуИлиВТехподтержкуToolStripMenuItem_Click);
             // 
             // notifyIcon1
             // 
@@ -319,34 +348,6 @@
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // скаатьДрайвераАтол10ХToolStripMenuItem
-            // 
-            this.скаатьДрайвераАтол10ХToolStripMenuItem.Name = "скаатьДрайвераАтол10ХToolStripMenuItem";
-            this.скаатьДрайвераАтол10ХToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
-            this.скаатьДрайвераАтол10ХToolStripMenuItem.Text = "Скачать драйвера Атол 10Х";
-            this.скаатьДрайвераАтол10ХToolStripMenuItem.Click += new System.EventHandler(this.СкаатьДрайвераАтол10ХToolStripMenuItem_Click);
-            // 
-            // скаатьДрайвераАтол816ХToolStripMenuItem
-            // 
-            this.скаатьДрайвераАтол816ХToolStripMenuItem.Name = "скаатьДрайвераАтол816ХToolStripMenuItem";
-            this.скаатьДрайвераАтол816ХToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
-            this.скаатьДрайвераАтол816ХToolStripMenuItem.Text = "Скачать драйвера Атол 8.16Х";
-            this.скаатьДрайвераАтол816ХToolStripMenuItem.Click += new System.EventHandler(this.СкаатьДрайвераАтол816ХToolStripMenuItem_Click);
-            // 
-            // скачатьДаннуюПрограммуToolStripMenuItem
-            // 
-            this.скачатьДаннуюПрограммуToolStripMenuItem.Name = "скачатьДаннуюПрограммуToolStripMenuItem";
-            this.скачатьДаннуюПрограммуToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
-            this.скачатьДаннуюПрограммуToolStripMenuItem.Text = "Скачать данную программу. ";
-            this.скачатьДаннуюПрограммуToolStripMenuItem.Click += new System.EventHandler(this.СкачатьДаннуюПрограммуToolStripMenuItem_Click);
-            // 
-            // дополнительноеПОToolStripMenuItem
-            // 
-            this.дополнительноеПОToolStripMenuItem.Name = "дополнительноеПОToolStripMenuItem";
-            this.дополнительноеПОToolStripMenuItem.Size = new System.Drawing.Size(389, 26);
-            this.дополнительноеПОToolStripMenuItem.Text = "Дополнительное ПО";
-            this.дополнительноеПОToolStripMenuItem.Click += new System.EventHandler(this.ДополнительноеПОToolStripMenuItem_Click);
             // 
             // Form1
             // 

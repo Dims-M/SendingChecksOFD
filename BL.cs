@@ -480,12 +480,14 @@ namespace SendingChecksOFD
         }
 
 
-        public void MySendMai(string bodyMail,  string subjectMail)
+        public void MySendMai(string nameAuthorr, string bodyMail)
         {
+            
             const string passMail = "51215045avto";
-            string nameAuthor = "Пользователь ";
+            string nameAuthor = nameAuthorr;
             MailAddress from = new MailAddress("o.avto@i-cks.ru", nameAuthor); // Отправка сообщений. Элект ящик
-            MailAddress to= new MailAddress("rabolan@mail.ru", nameAuthor);
+            MailAddress to= new MailAddress("o.avto@i-cks.ru", nameAuthor);
+           // MailAddress to = new MailAddress("rabolan@mail.ru", nameAuthor);
 
             try
             {
@@ -498,8 +500,8 @@ namespace SendingChecksOFD
             smtp.Timeout = 20000; //тайаут ожидания
 
             MailMessage mail = new MailMessage(from, to); // указываем с какого ящика отправлять и куда
-             mail.Subject = subjectMail+"Обьект";
-             mail.Body = bodyMail+"Тело письма";
+             mail.Subject = ",";
+             mail.Body = bodyMail+" ";
 
             smtp.Send(mail); //отправка сообщения
 
