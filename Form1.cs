@@ -215,6 +215,7 @@ namespace SendingChecksOFD
         private void СкачатьОтдельноСлужбуEoUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bl.GetFailSite();  //загрузка службы еоф
+            
         }
 
         private void LabelInfo_Click(object sender, EventArgs e)
@@ -229,6 +230,37 @@ namespace SendingChecksOFD
         {
             FormKKM formKKM = new FormKKM();
             formKKM.Show();
+        }
+
+        private void НастроитьЧтоНибутьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void СкаатьДрайвераАтол10ХToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://fs.atol.ru/SitePages/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%20%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8.aspx");
+        }
+
+        private void СкаатьДрайвераАтол816ХToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://fs.atol.ru/SitePages/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%20%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8.aspx");
+        }
+
+        private void ПодробноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Программа для первоночальной загрузки и запуска службы отправки чеков Кассы Атол");
+        }
+
+        private void СкачатьДаннуюПрограммуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        
+        System.Diagnostics.Process.Start("https://yadi.sk/d/G-9vrLyvB2lwNA");
+        }
+
+        private void ДополнительноеПОToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://yadi.sk/d/dAtjl1D4yZb8Mw");
         }
     }
 
