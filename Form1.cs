@@ -178,7 +178,7 @@ namespace SendingChecksOFD
         {
            // bl.ProverkaVersion();
            // bl.appShortcutToDesktop("test"); // url ссылка 
-            bl.appShortcutToDesktop("еуые");
+           bl.appShortcutToDesktop(); // НЕ работает
            // ProverkaVersion();
 
             //String s = System.Environment.GetEnvironmentVariable("programfiles");

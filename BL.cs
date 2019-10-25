@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -464,71 +465,42 @@ namespace SendingChecksOFD
         }
 
 
-        //Создание ярлыка программы НЕ работает
-        public void appShortcutToDesktop(string linkName)
+        //Создание ярлыка программы 
+        public void appShortcutToDesktop()
         {
-       // http://tolik-punkoff.com/2018/10/15/c-programmnoe-sozdanie-yarlyka-shortcut-windows/
+            //  https://stackoverflow.com/questions/234231/creating-application-shortcut-in-a-directory
+            string shortcutPathFail = @"C:\EoUTemp\SendingChecksOFD.exe";
+            string koodaPath2 = @"C:\Users\Dim\Desktop\Отправка чеков в ОФД.lnk";
 
-            string LinkPathName = @"C:\\EoUTemp\\EoU\\SendingChecksOFD.exe";
-            WshShell shell = new WshShell();
-            IWshShortcut link = (IWshShortcut)shell.CreateShortcut(LinkPathName);
-            link.TargetPath = @"C:\EoUTemp\" + linkName;
-            link.Save();
+            Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")); //Windows Script Host Shell Object
+            dynamic shell = Activator.CreateInstance(t);
+            try
+            {
+                //var lnk = shell.CreateShortcut("sc.lnk");
+                var lnk = shell.CreateShortcut(koodaPath2);
+                try
+                {
+                    // lnk.TargetPath = @"C:\something";
+                    
+                    lnk.TargetPath = shortcutPathFail;
 
-            //string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                    // lnk.IconLocation = "shell32.dll, 1";
+                    lnk.IconLocation = $"{shortcutPathFail}, 0";
 
-            //using (StreamWriter writer = new StreamWriter(deskDir + "\\" + linkName + ".url"))
-            //{
-            //    string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            //    writer.WriteLine("[InternetShortcut]");
-            //    writer.WriteLine("URL=file:///" + app);
-            //    writer.WriteLine("IconIndex=0");
-            //    string icon = app.Replace('\\', '/');
-            //    writer.WriteLine("IconFile=" + icon);
-            //    writer.Flush();
-            //}
+                    lnk.Save();
+                }
+                finally
+                {
+                    Marshal.FinalReleaseComObject(lnk);
+                }
+            }
+            finally
+            {
+                Marshal.FinalReleaseComObject(shell);
+            }
+
         }
-
-    //private void createShortcutOnDesktop(String executablePath)
-    //{
-    //    // Create a new instance of WshShellClass
-
-    //    WshShell lib = new WshShellClass();
-    //    // Create the shortcut
-
-    //    IWshRuntimeLibrary.IWshShortcut MyShortcut;
-
-
-    //    // Choose the path for the shortcut
-    //    string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-    //    MyShortcut = (IWshRuntimeLibrary.IWshShortcut)lib.CreateShortcut(@deskDir + "\\AZ.lnk");
-
-
-    //    // Where the shortcut should point to
-
-    //    //MyShortcut.TargetPath = Application.ExecutablePath;
-    //    MyShortcut.TargetPath = @executablePath;
-
-
-    //    // Description for the shortcut
-
-    //    MyShortcut.Description = "Launch AZ Client";
-
-    //    StreamWriter writer = new StreamWriter(@"D:\AZ\logo.ico");
-    //    Properties.Resources.system.Save(writer.BaseStream);
-    //    writer.Flush();
-    //    writer.Close();
-    //    // Location for the shortcut icon           
-
-    //    MyShortcut.IconLocation = @"D:\AZ\logo.ico";
-
-
-    //    // Create the shortcut at the given path
-
-    //    MyShortcut.Save();
-
-    //}
-
+    
 
     //запись в файл
     /// <summary>
