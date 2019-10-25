@@ -19,7 +19,8 @@ namespace SendingChecksOFD
 {
     public class BL
     {
-        private string logErrors = "Журнал событий.txt";
+       // private string logErrors = "Журнал событий.txt";
+        private string logErrors = Application.StartupPath+ "Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
 
         readonly string pathDirTemp = @"C:\EoUTemp\";
