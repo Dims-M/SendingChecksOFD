@@ -470,6 +470,7 @@ namespace SendingChecksOFD
         {
             //  https://stackoverflow.com/questions/234231/creating-application-shortcut-in-a-directory
             string shortcutPathFail = @"C:\EoUTemp\SendingChecksOFD.exe";
+            string shortcutPathFail222 = Application.StartupPath+ "\\SendingChecksOFD.exe";
             string koodaPath2 = @"C:\Users\Dim\Desktop\Отправка чеков в ОФД.lnk";
 
             Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")); //Windows Script Host Shell Object
@@ -482,10 +483,10 @@ namespace SendingChecksOFD
                 {
                     // lnk.TargetPath = @"C:\something";
                     
-                    lnk.TargetPath = shortcutPathFail;
+                    lnk.TargetPath = shortcutPathFail222;
 
                     // lnk.IconLocation = "shell32.dll, 1";
-                    lnk.IconLocation = $"{shortcutPathFail}, 0";
+                    lnk.IconLocation = $"{shortcutPathFail222}, 0";
 
                     lnk.Save();
                 }

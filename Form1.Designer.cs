@@ -62,6 +62,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -233,10 +234,10 @@
             // buttonTesrtSatarEOU
             // 
             this.buttonTesrtSatarEOU.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(8, 270);
+            this.buttonTesrtSatarEOU.Location = new System.Drawing.Point(12, 270);
             this.buttonTesrtSatarEOU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTesrtSatarEOU.Name = "buttonTesrtSatarEOU";
-            this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(163, 66);
+            this.buttonTesrtSatarEOU.Size = new System.Drawing.Size(149, 66);
             this.buttonTesrtSatarEOU.TabIndex = 1;
             this.buttonTesrtSatarEOU.Text = "Скачать или проверить обновление службы  EoU";
             this.buttonTesrtSatarEOU.UseVisualStyleBackColor = true;
@@ -244,7 +245,7 @@
             // 
             // buttonStartEoU
             // 
-            this.buttonStartEoU.Location = new System.Drawing.Point(177, 134);
+            this.buttonStartEoU.Location = new System.Drawing.Point(171, 88);
             this.buttonStartEoU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStartEoU.Name = "buttonStartEoU";
             this.buttonStartEoU.Size = new System.Drawing.Size(229, 75);
@@ -255,7 +256,7 @@
             // 
             // buttonSaveSetings
             // 
-            this.buttonSaveSetings.Location = new System.Drawing.Point(245, 270);
+            this.buttonSaveSetings.Location = new System.Drawing.Point(177, 270);
             this.buttonSaveSetings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSaveSetings.Name = "buttonSaveSetings";
             this.buttonSaveSetings.Size = new System.Drawing.Size(133, 66);
@@ -276,7 +277,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(177, 215);
+            this.checkBox1.Location = new System.Drawing.Point(177, 184);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(223, 21);
@@ -288,7 +289,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(177, 242);
+            this.checkBox2.Location = new System.Drawing.Point(177, 209);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(202, 21);
@@ -325,7 +326,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(12, 202);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 50);
+            this.button1.Size = new System.Drawing.Size(127, 50);
             this.button1.TabIndex = 9;
             this.button1.Text = "Закрыть службу";
             this.button1.UseVisualStyleBackColor = true;
@@ -349,11 +350,24 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(177, 245);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(257, 21);
+            this.checkBox3.TabIndex = 13;
+            this.checkBox3.Text = "Создать ярлый на рабочем столе.";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 357);
+            this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -420,6 +434,7 @@
         private System.Windows.Forms.ToolStripMenuItem скаатьДрайвераАтол816ХToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem скачатьДаннуюПрограммуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem дополнительноеПОToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }
 

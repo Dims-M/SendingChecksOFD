@@ -166,7 +166,7 @@ namespace SendingChecksOFD
             bl.GetDirecEou(); //Cjplfybt папок
             bl.ZipArhivJob(); // распаковка
             labelInfo.Text += bl.GetSettingPortEou();
-
+          //  bl.appShortcutToDesktop(); //создаем ярлык програмы на рабочем столе
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -270,6 +270,21 @@ namespace SendingChecksOFD
         {
             Forms.MessageForm1 messageForm = new Forms.MessageForm1();
             messageForm.Show();
+        }
+
+        //Создать ярлык на рабочем столе
+        private void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox3 = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
+
+            if (checkBox3.Checked == true)
+            {
+                bl.appShortcutToDesktop();
+            }
+            else
+            {
+                //удалить ярлык
+            }
         }
     }
 
