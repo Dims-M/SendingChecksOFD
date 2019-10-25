@@ -176,27 +176,30 @@ namespace SendingChecksOFD
 
         private void Button2_Click(object sender, EventArgs e)
         {
+           // bl.ProverkaVersion();
+           // bl.appShortcutToDesktop("test"); // url ссылка 
+            bl.appShortcutToDesktop("еуые");
+           // ProverkaVersion();
 
+            //String s = System.Environment.GetEnvironmentVariable("programfiles");
+            //String s2 = System.Environment.GetEnvironmentVariable("Startup");
 
-            String s = System.Environment.GetEnvironmentVariable("programfiles");
-            String s2 = System.Environment.GetEnvironmentVariable("Startup");
-
-            bl.MySendMai("От Кого","типо тела письма");
+            //bl.MySendMai("От Кого","типо тела письма");
 
 
             //  //String s3 = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartup);
-            String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-           // s3 += "\\";
-          //  bl.WrateText("Строка подключения \n"+s3);
-           // MessageBox.Show(s3);
+            //  String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+            // s3 += "\\";
+            //  bl.WrateText("Строка подключения \n"+s3);
+            // MessageBox.Show(s3);
 
             //string a = "~runme.lnk";
             //string b = @"C:\EoU\";
             //string c = s3;
-           // File.Copy(b + a, c + a);
+            // File.Copy(b + a, c + a);
 
             //  File.Copy(@"C:\EoU\~runme", s3);
-           // File.Copy(@"C:\EoU\EthOverUsb.exe", $"{s3}~runme.lnk");
+            // File.Copy(@"C:\EoU\EthOverUsb.exe", $"{s3}~runme.lnk");
         }
 
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)

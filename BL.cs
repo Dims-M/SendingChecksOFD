@@ -10,14 +10,17 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IWshRuntimeLibrary;
+
+
 
 namespace SendingChecksOFD
 {
-  public  class BL
+    public class BL
     {
-        private string logErrors ="Журнал событий.txt";
+        private string logErrors = "Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
-     
+
         readonly string pathDirTemp = @"C:\EoUTemp\";
         string pathDirEoU = @"C:\EoU\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
@@ -27,11 +30,11 @@ namespace SendingChecksOFD
         string pathEoUSettings = @"C:\EoU\C:\EoU\settings.ini";
         string[] port = new string[10];
 
-      string tempInfo = "";
-      string  tempMessahc = "";
+        string tempInfo = "";
+        string tempMessahc = "";
 
-      static  bool metHide = false;
-      static  bool avtoLoad = true;
+        static bool metHide = false;
+        static bool avtoLoad = true;
 
         //автозапуск приложения через реестр
         // http://www.cyberforum.ru/csharp-beginners/thread282803.html
@@ -53,13 +56,13 @@ namespace SendingChecksOFD
         //http://www.cyberforum.ru/csharp-beginners/thread2062011.html
 
         //отпрвка емайла
-       //https://programming-csharp.ru/2018/01/03/%d1%84%d0%be%d1%80%d0%bc%d0%b0-%d0%be%d0%b1%d1%80%d0%b0%d1%82%d0%bd%d0%be%d0%b9-%d1%81%d0%b2%d1%8f%d0%b7%d0%b8-%d0%bd%d0%b0-c/
+        //https://programming-csharp.ru/2018/01/03/%d1%84%d0%be%d1%80%d0%bc%d0%b0-%d0%be%d0%b1%d1%80%d0%b0%d1%82%d0%bd%d0%be%d0%b9-%d1%81%d0%b2%d1%8f%d0%b7%d0%b8-%d0%bd%d0%b0-c/
 
         /// <summary>
         /// включение, отключение скрытого режима
         /// </summary>
         /// <param name="hide"></param>
-        public void inetMetHide( bool hide)
+        public void inetMetHide(bool hide)
         {
             metHide = hide;
         }
@@ -77,7 +80,7 @@ namespace SendingChecksOFD
         /// Запись в автозагрузку
         /// </summary>
         /// <param name="swixh"></param>
-        public void voidRegAvtoLoad( bool swixh)
+        public void voidRegAvtoLoad(bool swixh)
         {
             String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
             s3 += "\\";
@@ -90,7 +93,7 @@ namespace SendingChecksOFD
 
             try
             {
-            if (swixh)
+                if (swixh)
                 {
                     #region НЕ смотреть
                     // var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
@@ -102,22 +105,22 @@ namespace SendingChecksOFD
                     //  File.Delete(c + a);
                     #endregion
 
-                    File.Copy(b + a, c + a);
-                //File.Copy(@"C:\EoU\~runme", patchStartup);
-            }
-            
-            else 
-            {
-              //  var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                //  key.DeleteValue("Отправка чеков в ОФД",true);
-                // File.Delete(@"C:\EoU\EthOverUsb.exe");
-                File.Delete(c + a);
-            }
+                    System.IO.File.Copy(b + a, c + a);
+                    //File.Copy(@"C:\EoU\~runme", patchStartup);
+                }
+
+                else
+                {
+                    //  var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                    //  key.DeleteValue("Отправка чеков в ОФД",true);
+                    // File.Delete(@"C:\EoU\EthOverUsb.exe");
+                    System.IO.File.Delete(c + a);
+                }
 
             }
             catch (Exception ex)
             {
-                WrateText("Ошибка при работе с установкой автозагрузки"+ex);
+                WrateText("Ошибка при работе с установкой автозагрузки" + ex);
             }
         }
 
@@ -137,11 +140,11 @@ namespace SendingChecksOFD
             {
                 System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                WrateText(" Ошибка при закрытии процесса"+ex);
+                WrateText(" Ошибка при закрытии процесса" + ex);
             }
-             
+
         }
 
         //Распаковка архива в нужный каталог
@@ -157,10 +160,10 @@ namespace SendingChecksOFD
 
             catch (Exception ex)
             {
-                WrateText("Ошибка при разорхивации архива EoU\n"+ ex);
+                WrateText("Ошибка при разорхивации архива EoU\n" + ex);
             }
 
-          //  File.Delete(zipPath);
+            //  File.Delete(zipPath);
         }
 
         /// <summary>
@@ -169,27 +172,27 @@ namespace SendingChecksOFD
         /// <returns></returns>
         public string GetSettingPortEou()
         {
-           port = File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
-           return $"Порт дляотправки чеков установлен = {port[1]}";
+            port = System.IO.File.ReadAllText(@"C:\EoU\settings.ini").Split('=');
+            return $"Порт дляотправки чеков установлен = {port[1]}";
         }
 
         /// <summary>
         /// Открытие и созание файла настроек settings.ini
         /// </summary>
         /// <param name="myPort">Указать нужный порт</param>
-        public void SetSettingPortEou( int myPort)
+        public void SetSettingPortEou(int myPort)
         {
 
-           // File.OpenWrite( ).Seek(-2, SeekOrigin.End);
-           string text =$"[com]\nnumber={myPort}";
-           
+            // File.OpenWrite( ).Seek(-2, SeekOrigin.End);
+            string text = $"[com]\nnumber={myPort}";
+
             // запись в файл
             using (FileStream fstream = new FileStream(@"C:\EoU\settings.ini", FileMode.Create))
             {
                 byte[] array = System.Text.Encoding.Default.GetBytes(text);
                 // асинхронная запись массива байтов в файл
                 fstream.Write(array, 0, array.Length);
-               // Console.WriteLine("Текст записан в файл");
+                // Console.WriteLine("Текст записан в файл");
             }
         }
 
@@ -217,43 +220,43 @@ namespace SendingChecksOFD
         /// <returns></returns>
         public int SetSettingMode()
         {
-            var mode = File.ReadAllText(@"C:\EoU\settingsOFD.ini").Split('=');
-            int temMode =0;
+            var mode = System.IO.File.ReadAllText(@"C:\EoU\settingsOFD.ini").Split('=');
+            int temMode = 0;
             try
             {
                 return temMode = int.Parse(mode[1]);
             }
             catch (Exception ex)
             {
-                WrateText("Ошибка при загрузке файла настроек"+ex);
+                WrateText("Ошибка при загрузке файла настроек" + ex);
             }
-            return  temMode;
+            return temMode;
         }
 
         /// <summary>
         /// Создание директории, временной папки
         /// </summary>
-        public void InitDirAndFile( string myPachDir)
+        public void InitDirAndFile(string myPachDir)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(myPachDir);
-           // File.Create(@"C:\EoU\settings.ini");
+            // File.Create(@"C:\EoU\settings.ini");
 
-           // FileInfo fileInfo = new FileInfo(pathFileZip);
+            // FileInfo fileInfo = new FileInfo(pathFileZip);
             try
             {
                 if (!dirInfo.Exists)
                 {
                     dirInfo.Create();  // cоздаем временный католог
                     WrateText($"Создался католог {myPachDir}\n");
-                   
+
                 }
             }
             catch (Exception ex)
             {
-                WrateText("Произошла ошибка при создании главной директории!!! \n" + ex+"\n");
+                WrateText("Произошла ошибка при создании главной директории!!! \n" + ex + "\n");
             }
-          
-            
+
+
         }
 
 
@@ -264,33 +267,33 @@ namespace SendingChecksOFD
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-           // string pathDirEoU = @"C:\EoU\";
+            // string pathDirEoU = @"C:\EoU\";
             int fileCount = 0;
             string[] filePaths;
 
             try
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(pathDir);
-              //  Directory.Delete(pathDir);
+                //  Directory.Delete(pathDir);
 
                 //if (!dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
                 //{
-                    InitDirAndFile(pathDirTemp);
-                    InitDirAndFile(pathDirEoU);
-                  //  GetSetingStarMode(0); //запуск 
-                    GetFailSite(); // загружаем файл с сайта
-                    ZipArhivJob();  //***************
-                    tempInfo += "Первоночальная Загрузка и распаковка новой службы EoU";
-                    filePaths = Directory.GetFiles(pathDirEoU);
-                    fileCount = filePaths.Length;
+                InitDirAndFile(pathDirTemp);
+                InitDirAndFile(pathDirEoU);
+                //  GetSetingStarMode(0); //запуск 
+                GetFailSite(); // загружаем файл с сайта
+                ZipArhivJob();  //***************
+                tempInfo += "Первоночальная Загрузка и распаковка новой службы EoU";
+                filePaths = Directory.GetFiles(pathDirEoU);
+                fileCount = filePaths.Length;
 
                 //}
 
-               //if (dirInfo.Exists)
-               // {
-               //     filePaths = Directory.GetFiles(pathDirEoU);
-               //     fileCount = filePaths.Length;
-               // }
+                //if (dirInfo.Exists)
+                // {
+                //     filePaths = Directory.GetFiles(pathDirEoU);
+                //     fileCount = filePaths.Length;
+                // }
 
                 if (fileCount < 12)
                 {
@@ -300,20 +303,20 @@ namespace SendingChecksOFD
             }
             catch (Exception ex)
             {
-                WrateText("произошла ошибка при проверке существования папки EoU"+ex);
+                WrateText("произошла ошибка при проверке существования папки EoU" + ex);
             }
 
             stopwatch.Stop();
-          //  WrateText(stopwatch."");
+            //  WrateText(stopwatch."");
             return fileCount;
-            
+
         }
 
 
         public string proverkaDirFikeEou()
         {
 
-           
+
             return tempInfo;
         }
 
@@ -326,7 +329,7 @@ namespace SendingChecksOFD
             string pathFile = @"C:\EoUTemp\EoU.zip";
             string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/EoU.zip";
 
-            if (File.Exists(pathFile))
+            if (System.IO.File.Exists(pathFile))
             {
                 errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
                 WrateText(errorLog);
@@ -347,12 +350,12 @@ namespace SendingChecksOFD
         /// <summary>
         /// Проверка и получение обновление программы
         /// </summary>
-        public string   GetUbtateApp() //async
+        public string GetUbtateApp() //async
         {
 
             const string pathFile = "ver.txt";
             // const string path = @"C:\SomeDir\";
-           // const string path = @"C:\Program Files\SomeDir";
+            // const string path = @"C:\Program Files\SomeDir";
             const string serFtp = @"https://testkkm.000webhostapp.com/hz/Ver.txt";
             //string tempMessahc = "";
 
@@ -372,14 +375,14 @@ namespace SendingChecksOFD
             //Получение версии на сервере
             using (var web = new WebClient())
             {
-               // await Task.Run(() => web.DownloadFile(serFtp, pathDirTemp + "ver.txt"));
+                // await Task.Run(() => web.DownloadFile(serFtp, pathDirTemp + "ver.txt"));
                 web.DownloadFile(serFtp, pathDirTemp + "ver.txt");
                 // аисинхроный запуск
                 // скачиваем откуда и куда
 
             }
             // чтение из файла и проверяем текущую версию файла и нового на сервере
-            using (FileStream fstream = File.OpenRead(pathDirTemp + pathFile))
+            using (FileStream fstream = System.IO.File.OpenRead(pathDirTemp + pathFile))
             {
                 // преобразуем строку в байты
                 byte[] array = new byte[fstream.Length];
@@ -410,7 +413,7 @@ namespace SendingChecksOFD
 
                 }
 
-                File.Delete(pathFile);
+                System.IO.File.Delete(pathFile);
 
             }
 
@@ -426,29 +429,21 @@ namespace SendingChecksOFD
             string pathFile = @"C:\EoUTemp\UpdateSendingChecksOFD.zip";
             string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/SendingChecksOFD.zip";
 
-            File.Delete(pathFile);
-            File.Delete("UpdateSendingChecksOFD.exe");
-
-            //if (File.Exists(pathFile))
-            //{
-            //    File.Delete(pathFile);
-            //    errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n И будет удален.";
-            //    WrateText(errorLog);
-            //}
+            System.IO.File.Delete(pathFile);
+            System.IO.File.Delete("UpdateSendingChecksOFD.exe");
 
             using (var web = new WebClient())
-                {
+            {
+                // скачиваем откуда и куда
+                web.DownloadFile(serFtp, pathFile);
+            }
 
-                    // скачиваем откуда и куда
-                    web.DownloadFile(serFtp, pathFile);
-                }
-
-            //string zipPath = @"C:\EoUTemp\EoU.zip";
             string extractPath = @"C:\EoUTemp\";
 
             try
             {
                 ZipFile.ExtractToDirectory(pathFile, extractPath);
+                ProverkaVersion();
             }
 
             catch (Exception ex)
@@ -459,18 +454,88 @@ namespace SendingChecksOFD
 
         }
 
-        public string ProverkaVersion()
+        public void ProverkaVersion()
         {
-            GetUbtateApp();
-            return tempMessahc;
+            string pathFile = @"C:\EoUTemp\SendingChecksOFD.exe";
+            System.Diagnostics.Process.Start(pathFile);
+            Thread.Sleep(2000);
+            Application.Exit();
+
         }
 
-        //запись в файл
-        /// <summary>
-        /// запись в текстовой файл. Журнал событий
-        /// </summary>
-        /// <param name="myText"></param>
-        public void WrateText(string myText)
+
+        //Создание ярлыка программы НЕ работает
+        public void appShortcutToDesktop(string linkName)
+        {
+       // http://tolik-punkoff.com/2018/10/15/c-programmnoe-sozdanie-yarlyka-shortcut-windows/
+
+            string LinkPathName = @"C:\\EoUTemp\\EoU\\SendingChecksOFD.exe";
+            WshShell shell = new WshShell();
+            IWshShortcut link = (IWshShortcut)shell.CreateShortcut(LinkPathName);
+            link.TargetPath = @"C:\EoUTemp\" + linkName;
+            link.Save();
+
+            //string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
+            //using (StreamWriter writer = new StreamWriter(deskDir + "\\" + linkName + ".url"))
+            //{
+            //    string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            //    writer.WriteLine("[InternetShortcut]");
+            //    writer.WriteLine("URL=file:///" + app);
+            //    writer.WriteLine("IconIndex=0");
+            //    string icon = app.Replace('\\', '/');
+            //    writer.WriteLine("IconFile=" + icon);
+            //    writer.Flush();
+            //}
+        }
+
+    //private void createShortcutOnDesktop(String executablePath)
+    //{
+    //    // Create a new instance of WshShellClass
+
+    //    WshShell lib = new WshShellClass();
+    //    // Create the shortcut
+
+    //    IWshRuntimeLibrary.IWshShortcut MyShortcut;
+
+
+    //    // Choose the path for the shortcut
+    //    string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+    //    MyShortcut = (IWshRuntimeLibrary.IWshShortcut)lib.CreateShortcut(@deskDir + "\\AZ.lnk");
+
+
+    //    // Where the shortcut should point to
+
+    //    //MyShortcut.TargetPath = Application.ExecutablePath;
+    //    MyShortcut.TargetPath = @executablePath;
+
+
+    //    // Description for the shortcut
+
+    //    MyShortcut.Description = "Launch AZ Client";
+
+    //    StreamWriter writer = new StreamWriter(@"D:\AZ\logo.ico");
+    //    Properties.Resources.system.Save(writer.BaseStream);
+    //    writer.Flush();
+    //    writer.Close();
+    //    // Location for the shortcut icon           
+
+    //    MyShortcut.IconLocation = @"D:\AZ\logo.ico";
+
+
+    //    // Create the shortcut at the given path
+
+    //    MyShortcut.Save();
+
+    //}
+
+
+    //запись в файл
+    /// <summary>
+    /// запись в текстовой файл. Журнал событий
+    /// </summary>
+    /// <param name="myText"></param>
+    public void WrateText(string myText)
         {
             using (StreamWriter sw = new StreamWriter(logErrors, true, System.Text.Encoding.Default))
             {
@@ -479,36 +544,40 @@ namespace SendingChecksOFD
             }
         }
 
-
+        /// <summary>
+        /// Отправка сообщение на почту
+        /// </summary>
+        /// <param name="nameAuthorr"></param>
+        /// <param name="bodyMail"></param>
         public void MySendMai(string nameAuthorr, string bodyMail)
         {
-            
+
             const string passMail = "51215045avto";
             string nameAuthor = nameAuthorr;
             MailAddress from = new MailAddress("o.avto@i-cks.ru", nameAuthor); // Отправка сообщений. Элект ящик
-            MailAddress to= new MailAddress("o.avto@i-cks.ru", nameAuthor);
-           // MailAddress to = new MailAddress("rabolan@mail.ru", nameAuthor);
+            MailAddress to = new MailAddress("o.avto@i-cks.ru", nameAuthor);
+            // MailAddress to = new MailAddress("rabolan@mail.ru", nameAuthor);
 
             try
             {
 
-            //клиен для отправки письма
-            SmtpClient smtp = new SmtpClient("smtp.mail.ru", 25);
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // указываем способ доставки
-            smtp.Credentials = new NetworkCredential(from.Address, passMail);
-            smtp.EnableSsl = true; // шифровка сообщений
-            smtp.Timeout = 20000; //тайаут ожидания
+                //клиен для отправки письма
+                SmtpClient smtp = new SmtpClient("smtp.mail.ru", 25);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // указываем способ доставки
+                smtp.Credentials = new NetworkCredential(from.Address, passMail);
+                smtp.EnableSsl = true; // шифровка сообщений
+                smtp.Timeout = 20000; //тайаут ожидания
 
-            MailMessage mail = new MailMessage(from, to); // указываем с какого ящика отправлять и куда
-             mail.Subject = ",";
-             mail.Body = bodyMail+" ";
+                MailMessage mail = new MailMessage(from, to); // указываем с какого ящика отправлять и куда
+                mail.Subject = ",";
+                mail.Body = bodyMail + " ";
 
-            smtp.Send(mail); //отправка сообщения
+                smtp.Send(mail); //отправка сообщения
 
             }
             catch (Exception ex)
             {
-                WrateText("Ошибка при отправке письма"+ex);
+                WrateText("Ошибка при отправке письма" + ex);
             }
 
         }
@@ -538,9 +607,9 @@ namespace SendingChecksOFD
                 iStartProcess.StartInfo.FileName = pathEoU; // путь к запускаемому файлу
                 iStartProcess.StartInfo.Arguments = " -e";
 
-                if (metHide )
+                if (metHide)
                 {
-                   // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    // iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                 }
 
@@ -557,11 +626,16 @@ namespace SendingChecksOFD
 
         }
 
+
+        public void TestObnovlenie()
+        {
+
+        }
+
+
+
     }
-
-
-
-
+  
 
 
 }
