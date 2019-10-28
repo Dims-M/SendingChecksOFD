@@ -63,6 +63,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.создатьBarcoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -70,16 +71,17 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выходToolStripMenuItem});
+            this.выходToolStripMenuItem,
+            this.создатьBarcoderToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.файлToolStripMenuItem.Text = "Работа с Barcode И QR";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
-            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.выходToolStripMenuItem.Text = "ВЫход из программы";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
             // menuStrip1
@@ -362,6 +364,13 @@
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
             // 
+            // создатьBarcoderToolStripMenuItem
+            // 
+            this.создатьBarcoderToolStripMenuItem.Name = "создатьBarcoderToolStripMenuItem";
+            this.создатьBarcoderToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.создатьBarcoderToolStripMenuItem.Text = "Создать Barcoder";
+            this.создатьBarcoderToolStripMenuItem.Click += new System.EventHandler(this.СоздатьBarcoderToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -435,6 +444,7 @@
         private System.Windows.Forms.ToolStripMenuItem скачатьДаннуюПрограммуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem дополнительноеПОToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.ToolStripMenuItem создатьBarcoderToolStripMenuItem;
     }
 }
 

@@ -16,5 +16,36 @@ namespace SendingChecksOFD.Forms
         {
             InitializeComponent();
         }
+
+        //кнопка при нажатии Barcoder
+        private void BtnBarcode_Click(object sender, EventArgs e)
+        {
+            //Обьект для работы с Barcode
+            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Image = barcode.Draw(txtBarcode.Text, 50); 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Close();
+           // Application.Exit();
+        }
+
+        //Кнопка при нажатие QRcoda
+        private void BtnQRCode_Click(object sender, EventArgs e)
+        {
+            Zen.Barcode.CodeQrBarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.CodeQr;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Image = barcode.Draw(txtQRCode.Text, 50);
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            pictureBox.Image = null;
+            txtQRCode.Text = "";
+            txtBarcode.Text = "";
+
+        }
     }
 }
