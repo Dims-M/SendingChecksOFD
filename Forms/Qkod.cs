@@ -47,5 +47,11 @@ namespace SendingChecksOFD.Forms
             txtBarcode.Text = "";
 
         }
+
+        //Кнопка тест
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+        }
     }
 }
