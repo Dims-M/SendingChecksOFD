@@ -51,9 +51,14 @@ namespace SendingChecksOFD.Forms
         //Кнопка тест
         private void Button3_Click(object sender, EventArgs e)
         {
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            
             BL bL = new BL();
             bL.SaveBarcodet(pictureBox);
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }
