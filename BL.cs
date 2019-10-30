@@ -92,7 +92,7 @@ namespace SendingChecksOFD
             string a = "~runme.lnk";
             string b = @"C:\EoU\";
             string c = s3;
-
+           
             try
             {
                 if (swixh)
@@ -403,30 +403,45 @@ namespace SendingChecksOFD
             }
             ZipArhivJobMyPath(pathFile, pathDirTemp);  //распаковка файла
 
-           string tempDeskop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-
+         //  string tempDeskop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+          //  tempDeskop += @"\";
             //перенас ярлыка на раб стол
-          //  System.IO.File.Move(pathDirTemp+ @"C:\EoUServis\SendingChecksOFDd.lnk", tempDeskop+ "SendingChecksOFDd");
+            //  System.IO.File.Move(pathDirTemp+ @"C:\EoUServis\SendingChecksOFDd.lnk", tempDeskop+ "SendingChecksOFDd");
             //  333
 
+            String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\";
+           // s3 += "\\";
+            //WrateText("Строка подключения \n" + s3);
+            // MessageBox.Show(s3);
 
+            string a = @"SendingChecksOFD.lnk";
+            string b = @"C:\\EoUServis\";
+            string c = s3;
 
-            string path = "C:\\EoUServis\\SendingChecksOFD.exe";
-            string newPath = tempDeskop + "\\SendingChecksOFD.exe";
+            System.IO.File.Copy(b + a, c + a);
 
+           // string path = @"C:\EoUServis\";
+           // string newPath = tempDeskop;
+
+            //string a = "`SendingChecksOFD.lnk";
+            //string b = path;
+            //string c = newPath;
+
+           // System.IO.File.Copy(b + a, c + a);
+             
 
            // System.IO.File.Copy(path, newPath,false);
 
-            FileInfo fileInf = new FileInfo(path);
+            //FileInfo fileInf = new FileInfo(path);
 
            
-            if (fileInf.Exists)
-            {
+            //if (fileInf.Exists)
+            //{
 
-                fileInf.CopyTo(newPath, true);
-                //     // альтернатива с помощью класса File
-                //     // File.Copy(path, newPath, true);
-            }
+            //    fileInf.CopyTo(newPath, true);
+            //    //     // альтернатива с помощью класса File
+            //    //     // File.Copy(path, newPath, true);
+            //}
             //запус новой версии программы из основной папки
             // ProverkaVersion(newPath);
         }
