@@ -152,7 +152,7 @@ namespace SendingChecksOFD
         //Распаковка архива в нужный каталог
         public void ZipArhivJob()
         {
-            string zipPath = @"C:\EoUTemp\EoU.zip";
+            string zipPath = @"C:\EoUServis\EoU.zip";
             string extractPath = @"C:\";
 
             try
@@ -354,7 +354,7 @@ namespace SendingChecksOFD
         {
             
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
-            string pathFile = @"C:\EoUTemp\EoU.zip";
+            string pathFile = @"C:\EoUServis\EoU.zip";
             string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/EoU.zip";
 
             if (System.IO.File.Exists(pathFile))
