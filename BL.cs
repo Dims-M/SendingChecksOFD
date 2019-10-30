@@ -23,7 +23,7 @@ namespace SendingChecksOFD
         private string logErrors = Application.StartupPath+ "Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
 
-        readonly string pathDirTemp = @"C:\EoUTemp\";
+        readonly string pathDirTemp = @"C:\EoUServis\";
         string pathDirEoU = @"C:\EoU\";
         string pathFileZip = @"C:\Program Files\Eou\1.rar";
         private readonly string patchStartup = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup";
@@ -169,6 +169,29 @@ namespace SendingChecksOFD
         }
 
         /// <summary>
+        /// Разорхивация файлов с указание что и куда орхивировать
+        /// </summary>
+        /// <param name="MyzipFail">Путь для файла.Откуда и какой архив</param>
+        /// <param name="MyExtractPath">Куда распаковыватьы</param>
+        public void ZipArhivJobMyPath(string MyzipFail, string MyExtractPath)
+        {
+            //string zipPath = @"C:\EoUTemp\EoU.zip";
+            //string extractPath = @"C:\";
+  
+            try
+            {
+                ZipFile.ExtractToDirectory(MyzipFail, MyExtractPath);
+            }
+
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при разорхивации архива EoU\n" + ex);
+            }
+
+            //  File.Delete(zipPath);
+        }
+
+        /// <summary>
         /// Считываем порт из настроек EoU
         /// </summary>
         /// <returns></returns>
@@ -280,8 +303,10 @@ namespace SendingChecksOFD
 
                 //if (!dirInfo.Exists) //Если папки нет зоздаем корневую папку EoU
                 //{
-                InitDirAndFile(pathDirTemp);
+              // 147
+                InitDirAndFile(pathDirTemp); // Папка программы
                 InitDirAndFile(pathDirEoU);
+
                 //  GetSetingStarMode(0); //запуск 
                 GetFailSite(); // загружаем файл с сайта
                 ZipArhivJob();  //***************
@@ -327,6 +352,7 @@ namespace SendingChecksOFD
         /// </summary>
         public void GetFailSite()
         {
+            
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
             string pathFile = @"C:\EoUTemp\EoU.zip";
             string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/EoU.zip";
@@ -350,7 +376,65 @@ namespace SendingChecksOFD
         }
 
         /// <summary>
-        /// Проверка и получение обновление программы
+        /// Получение папки с ддл с сайта
+        /// </summary>
+        public void GetServisEoU()
+        {
+            string errorLog = $"{DateTime.Now.ToString()}\t\n";
+            string pathFile = pathDirTemp + @"SendingChecksOFD.zip";
+
+            string serFtp = @"https://testkkm.000webhostapp.com/Dhh134567800gfdfh/SendingChecksOFD.zip";
+
+            if (System.IO.File.Exists(pathFile))
+            {
+                errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
+                WrateText(errorLog);
+            }
+
+            else
+            {
+                using (var web = new WebClient())
+                {
+
+                    // скачиваем откуда и куда
+                    web.DownloadFile(serFtp, pathFile);
+                }
+               // ZipArhivJobMyPath(pathFile, pathDirTemp);  //***************
+            }
+            ZipArhivJobMyPath(pathFile, pathDirTemp);  //распаковка файла
+
+           string tempDeskop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
+            //перенас ярлыка на раб стол
+          //  System.IO.File.Move(pathDirTemp+ @"C:\EoUServis\SendingChecksOFDd.lnk", tempDeskop+ "SendingChecksOFDd");
+            //  333
+
+
+
+            string path = "C:\\EoUServis\\SendingChecksOFD.exe";
+            string newPath = tempDeskop + "\\SendingChecksOFD.exe";
+
+
+           // System.IO.File.Copy(path, newPath,false);
+
+            FileInfo fileInf = new FileInfo(path);
+
+           
+            if (fileInf.Exists)
+            {
+
+                fileInf.CopyTo(newPath, true);
+                //     // альтернатива с помощью класса File
+                //     // File.Copy(path, newPath, true);
+            }
+            //запус новой версии программы из основной папки
+            // ProverkaVersion(newPath);
+        }
+
+
+
+        /// <summary>
+        /// Проверка и получение обновление программы НЕ Использовать
         /// </summary>
         public string GetUbtateApp() //async
         {
@@ -423,7 +507,7 @@ namespace SendingChecksOFD
         }
 
         /// <summary>
-        /// Скачивание новой версии программы и  распаковка
+        /// Скачивание новой версии программы и  распаковка НЕ использовать
         /// </summary>
         public void DounloadFailSite()
         {
@@ -445,7 +529,7 @@ namespace SendingChecksOFD
             try
             {
                 ZipFile.ExtractToDirectory(pathFile, extractPath);
-                ProverkaVersion();
+               // ProverkaVersion();
             }
 
             catch (Exception ex)
@@ -456,9 +540,13 @@ namespace SendingChecksOFD
 
         }
 
-        public void ProverkaVersion()
+        /// <summary>
+        /// запуск новой версии программы из  основной папки
+        /// </summary>
+        public void ProverkaVersion(string pathFile)
         {
-            string pathFile = @"C:\EoUTemp\SendingChecksOFD.exe";
+            //string pathFile = @"C:\EoUServis\SendingChecksOFD.exe";
+
             System.Diagnostics.Process.Start(pathFile);
             Thread.Sleep(2000);
             Application.Exit();
@@ -466,8 +554,8 @@ namespace SendingChecksOFD
         }
 
 
-        //Создание ярлыка программы 
-        public void appShortcutToDesktop()
+        //Создание ярлыка программы  Не успользовать
+        private void appShortcutToDesktop()
         {
             //  https://stackoverflow.com/questions/234231/creating-application-shortcut-in-a-directory
             string shortcutPathFail = @"C:\EoUTemp\SendingChecksOFD.exe";
@@ -639,6 +727,11 @@ namespace SendingChecksOFD
 
         }
 
+
+        public void StartInit()
+        {
+
+        }
 
 
     }

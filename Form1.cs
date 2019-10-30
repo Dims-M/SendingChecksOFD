@@ -176,9 +176,14 @@ namespace SendingChecksOFD
 
         private void Button2_Click(object sender, EventArgs e)
         {
-           // bl.ProverkaVersion();
-           // bl.appShortcutToDesktop("test"); // url ссылка 
-           bl.appShortcutToDesktop(); // НЕ работает
+            // bl.ProverkaVersion();
+            // bl.appShortcutToDesktop("test"); // url ссылка 
+            // bl.appShortcutToDesktop(); // НЕ работает
+
+            // Проверка создания папки с программаой
+            bl.GetServisEoU();
+
+
            // ProverkaVersion();
 
             //String s = System.Environment.GetEnvironmentVariable("programfiles");
@@ -280,7 +285,7 @@ namespace SendingChecksOFD
 
             if (checkBox3.Checked == true)
             {
-                bl.appShortcutToDesktop();
+               // bl.appShortcutToDesktop();
             }
             else
             {
