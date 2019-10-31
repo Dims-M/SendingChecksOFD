@@ -166,7 +166,8 @@ namespace SendingChecksOFD
             bl.GetDirecEou(); //Cjplfybt папок
             bl.ZipArhivJob(); // распаковка
             labelInfo.Text += bl.GetSettingPortEou();
-          //  bl.appShortcutToDesktop(); //создаем ярлык програмы на рабочем столе
+            bl.GetServisEoU();// Создание ярлыков. скачивание новвого дистробутива с сайта. перезапуск нойо программы с раб стола
+            //  bl.appShortcutToDesktop(); //создаем ярлык програмы на рабочем столе
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -181,7 +182,7 @@ namespace SendingChecksOFD
             // bl.appShortcutToDesktop(); // НЕ работает
 
             // Проверка создания папки с программаой
-            bl.GetServisEoU();
+           // bl.GetServisEoU();
 
 
            // ProverkaVersion();

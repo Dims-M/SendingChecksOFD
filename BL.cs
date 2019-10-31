@@ -20,7 +20,8 @@ namespace SendingChecksOFD
     public class BL
     {
        // private string logErrors = "Журнал событий.txt";
-        private string logErrors = Application.StartupPath+ "Журнал событий.txt";
+        //private string logErrors = Application.StartupPath+ "Журнал событий.txt";
+        private string logErrors = @"C:\EoUServis\Журнал событий.txt";
         readonly string pathDir = @"C:\Program Files\Eou\";
 
         readonly string pathDirTemp = @"C:\EoUServis\";
@@ -126,15 +127,7 @@ namespace SendingChecksOFD
             }
         }
 
-        /// <summary>
-        /// Автозапуск службы еов
-        /// </summary>
-        public void AvtoServeesEoU()
-        {
-
-        }
-
-
+        
         //закрыть нужны процесс по имени.
         public void KillProssec(string nameProssec)
         {
@@ -399,51 +392,21 @@ namespace SendingChecksOFD
                     // скачиваем откуда и куда
                     web.DownloadFile(serFtp, pathFile);
                 }
-               // ZipArhivJobMyPath(pathFile, pathDirTemp);  //***************
             }
+
             ZipArhivJobMyPath(pathFile, pathDirTemp);  //распаковка файла
-
-         //  string tempDeskop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-          //  tempDeskop += @"\";
-            //перенас ярлыка на раб стол
-            //  System.IO.File.Move(pathDirTemp+ @"C:\EoUServis\SendingChecksOFDd.lnk", tempDeskop+ "SendingChecksOFDd");
-            //  333
-
             String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\";
-           // s3 += "\\";
-            //WrateText("Строка подключения \n" + s3);
-            // MessageBox.Show(s3);
-
+           
             string a = @"SendingChecksOFD.lnk";
             string b = @"C:\\EoUServis\";
             string c = s3;
 
-            System.IO.File.Copy(b + a, c + a);
+            System.IO.File.Copy(b + a, c + a, true);
 
-           // string path = @"C:\EoUServis\";
-           // string newPath = tempDeskop;
 
-            //string a = "`SendingChecksOFD.lnk";
-            //string b = path;
-            //string c = newPath;
-
-           // System.IO.File.Copy(b + a, c + a);
-             
-
-           // System.IO.File.Copy(path, newPath,false);
-
-            //FileInfo fileInf = new FileInfo(path);
-
-           
-            //if (fileInf.Exists)
-            //{
-
-            //    fileInf.CopyTo(newPath, true);
-            //    //     // альтернатива с помощью класса File
-            //    //     // File.Copy(path, newPath, true);
-            //}
             //запус новой версии программы из основной папки
             // ProverkaVersion(newPath);
+            StarAppInDirect();
         }
 
 
@@ -558,9 +521,9 @@ namespace SendingChecksOFD
         /// <summary>
         /// запуск новой версии программы из  основной папки
         /// </summary>
-        public void ProverkaVersion(string pathFile)
+        public void StarAppInDirect()
         {
-            //string pathFile = @"C:\EoUServis\SendingChecksOFD.exe";
+            string pathFile = @"C:\EoUServis\SendingChecksOFD.exe";
 
             System.Diagnostics.Process.Start(pathFile);
             Thread.Sleep(2000);
@@ -703,7 +666,10 @@ namespace SendingChecksOFD
 
         }
 
-
+        /// <summary>
+        /// Сохранить картинку баркодера на компьютер
+        /// </summary>
+        /// <param name="pictureBox"></param>
         public void SaveBarcodet(PictureBox pictureBox)
         {
             //вместо pictureBox1 укажите свой pictureBox
