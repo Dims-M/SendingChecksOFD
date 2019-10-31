@@ -406,7 +406,7 @@ namespace SendingChecksOFD
 
             //запус новой версии программы из основной папки
             // ProverkaVersion(newPath);
-            StarAppInDirect();
+           // StarAppInDirect();
         }
 
 
@@ -523,10 +523,10 @@ namespace SendingChecksOFD
         /// </summary>
         public void StarAppInDirect()
         {
-            string pathFile = @"C:\EoUServis\SendingChecksOFD.exe";
+            string pathFile = @"C:\EoUServis\SendingChecksOFD.lnk";
 
             System.Diagnostics.Process.Start(pathFile);
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             Application.Exit();
 
         }

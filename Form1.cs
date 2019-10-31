@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SendingChecksOFD.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,6 +20,10 @@ namespace SendingChecksOFD
         private string _temp_info;
         public Form1()
         {
+
+            //Thread thread = new Thread(new ThreadStart(testStart));
+            //thread.Start();
+
             InitializeComponent();
 
             bl = new BL();
@@ -28,8 +34,23 @@ namespace SendingChecksOFD
             this.ShowInTaskbar = true;
             notifyIcon1.Click += notifyIcon1_Click;
 
+            //Thread.Sleep(3000);
+            //thread.Abort();
+
         }
 
+
+       void testStart()
+        {
+            SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
+            frm.AppName = "Отправка чеков в ОФД";
+           // frm.DesktopLocation 
+            Application.Run(frm);
+           // frm.Show();
+
+           
+
+        }
 
 
         //Запуск службы eUF
@@ -78,7 +99,7 @@ namespace SendingChecksOFD
         //При запуске формы
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+           
             // bl.GetDirecEou();
             if (hhhide)
             {
@@ -162,12 +183,17 @@ namespace SendingChecksOFD
         //Событие при вервом отображении формы
         private void Form1_Shown(object sender, EventArgs e)
         {
-            MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}\n Скачивание новор версии дистрбутива EoU");
+            Thread thread = new Thread(new ThreadStart(testStart));
+            thread.Start();
+
+          //  MessageBox.Show($"Проверка наличия службы Eou{ bl.proverkaDirFikeEou()}\n Скачивание новор версии дистрбутива EoU");
             bl.GetDirecEou(); //Cjplfybt папок
             bl.ZipArhivJob(); // распаковка
             labelInfo.Text += bl.GetSettingPortEou();
             bl.GetServisEoU();// Создание ярлыков. скачивание новвого дистробутива с сайта. перезапуск нойо программы с раб стола
-            //  bl.appShortcutToDesktop(); //создаем ярлык програмы на рабочем столе
+                              //  bl.appShortcutToDesktop(); //создаем ярлык програмы на рабочем столе
+            Thread.Sleep(3000);
+            thread.Abort();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -302,6 +328,7 @@ namespace SendingChecksOFD
         }
     }
 
+ 
 
    //дОБАВТЬ ФОРМУ ДЛЯ РАботы с ккм атол
    /// Логирование и отправка сообщений
