@@ -42,11 +42,20 @@ namespace SendingChecksOFD
 
        void testStart()
         {
-            SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
-            frm.AppName = "Отправка чеков в ОФД";
-           // frm.DesktopLocation 
-            Application.Run(frm);
-           // frm.Show();
+            try
+            {
+                SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
+                frm.AppName = "Отправка чеков в ОФД";
+                // frm.DesktopLocation 
+                Application.Run(frm);
+                // frm.Show();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            
 
            
 
@@ -208,10 +217,10 @@ namespace SendingChecksOFD
             // bl.appShortcutToDesktop(); // НЕ работает
 
             // Проверка создания папки с программаой
-           // bl.GetServisEoU();
+            // bl.GetServisEoU();
 
 
-           // ProverkaVersion();
+            // ProverkaVersion();
 
             //String s = System.Environment.GetEnvironmentVariable("programfiles");
             //String s2 = System.Environment.GetEnvironmentVariable("Startup");
@@ -232,6 +241,8 @@ namespace SendingChecksOFD
 
             //  File.Copy(@"C:\EoU\~runme", s3);
             // File.Copy(@"C:\EoU\EthOverUsb.exe", $"{s3}~runme.lnk");
+
+           bl.TesWebGetUrl(); // получени урлов
         }
 
         

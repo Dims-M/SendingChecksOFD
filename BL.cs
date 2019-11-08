@@ -10,8 +10,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
+
+
 
 
 
@@ -703,6 +706,23 @@ namespace SendingChecksOFD
             }
         }
 
+
+        public void TesWebGetUrl()
+        {
+            //http://www.cyberforum.ru/csharp-beginners/thread1711349.html
+            var root = AutomationElement.RootElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ClassNameProperty, "Chrome_WidgetWin_1"));
+            var textPCollection = root.FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.TabItem));
+            string tempUrl = "";
+
+            foreach (AutomationElement textP in textPCollection)
+            {
+                var vpi = textP.GetCurrentPropertyValue(AutomationElement.NameProperty);
+                tempUrl += vpi.ToString()+"\n";
+                //MessageBox.Show(vpi + " ");
+            }
+            WrateText(tempUrl);
+           
+        }
         public void TestObnovlenie()
         {
 
